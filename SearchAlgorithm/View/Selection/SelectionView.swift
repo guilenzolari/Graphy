@@ -1,8 +1,8 @@
 import SwiftUI
 
-struct AlgorithmSelectionView: View {
+struct SelectionView: View {
     @State private var selectedAlgorithm: AlgorithmType = .none
-    let viewModel: AlgorithmViewModel
+    let viewModel: SelectionViewModel
     
     var body: some View {
         Picker("Selecione o algoritmo desejado", selection: $selectedAlgorithm) {

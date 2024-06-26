@@ -1,42 +1,17 @@
 import Foundation
 
-class AlgorithmViewModel {
+struct SelectionViewModel: AlgorithmProtocol {
     
-    private let algorithm: AlgorithmModel
+    let algorithm: AlgorithmModel
     
     init(algorithm: AlgorithmModel) {
         self.algorithm = algorithm
     }
 }
 
-// MARK: - Presentation
-
-extension AlgorithmViewModel {
-    var algorithmPath: [String] {
-        algorithm.path
-    }
-    
-    var algorithmColumnSize: Int {
-        algorithm.columnSize
-    }
-    
-    var algorithmRowSize: Int {
-        algorithm.rowSize
-    }
-    
-    var algorithmGoalNode: String {
-        algorithm.goalNode
-    }
-    
-    var algorithmSourceNode: String {
-        algorithm.sourceNode
-    }
-}
-
 // MARK: - Actions
 
-extension AlgorithmViewModel {
-    
+extension SelectionViewModel {
     private func setType(for type: AlgorithmType) {
         algorithm.type = type
     }
@@ -69,7 +44,7 @@ extension AlgorithmViewModel {
             }
         }
     }
-
+    
     func stopTimer() {
         algorithm.timer?.invalidate()
     }

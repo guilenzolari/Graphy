@@ -1,15 +1,17 @@
 import SwiftUI
 
-struct AlgorithmView: View {
-    let viewModel: AlgorithmViewModel
+struct HomeView: View {
+    let viewFactory = ViewFactory(dependencies: Dependencies.shared)
+    
+    let viewModel: HomeViewModel
 
     var body: some View {
         VStack {
             
-            AlgorithmSelectionView(viewModel: viewModel)
+            viewFactory.selectionView()
             
             VStack(spacing: 0) {
-                GridView(viewModel: viewModel)
+                viewFactory.gridView()
                 Button(action: {
                     viewModel.clearSimulation()
                 }, label: {
