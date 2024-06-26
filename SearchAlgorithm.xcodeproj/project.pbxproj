@@ -14,6 +14,10 @@
 		A74068992C29BCE4001358EA /* GenerateGraph.swift in Sources */ = {isa = PBXBuildFile; fileRef = A74068982C29BCE4001358EA /* GenerateGraph.swift */; };
 		A740689C2C29BD1B001358EA /* BFS.swift in Sources */ = {isa = PBXBuildFile; fileRef = A740689B2C29BD1B001358EA /* BFS.swift */; };
 		A740689E2C2AFCD9001358EA /* DFS.swift in Sources */ = {isa = PBXBuildFile; fileRef = A740689D2C2AFCD9001358EA /* DFS.swift */; };
+		A74068A12C2C3921001358EA /* GridView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A74068A02C2C3921001358EA /* GridView.swift */; };
+		A74068A32C2C3B04001358EA /* AlgorithmSelectionView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A74068A22C2C3B04001358EA /* AlgorithmSelectionView.swift */; };
+		A74068A62C2C3E03001358EA /* AlgorithmModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = A74068A52C2C3E03001358EA /* AlgorithmModel.swift */; };
+		A74068A82C2C3EF9001358EA /* AlgorithmViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = A74068A72C2C3EF9001358EA /* AlgorithmViewModel.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -25,6 +29,10 @@
 		A74068982C29BCE4001358EA /* GenerateGraph.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GenerateGraph.swift; sourceTree = "<group>"; };
 		A740689B2C29BD1B001358EA /* BFS.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BFS.swift; sourceTree = "<group>"; };
 		A740689D2C2AFCD9001358EA /* DFS.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DFS.swift; sourceTree = "<group>"; };
+		A74068A02C2C3921001358EA /* GridView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GridView.swift; sourceTree = "<group>"; };
+		A74068A22C2C3B04001358EA /* AlgorithmSelectionView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AlgorithmSelectionView.swift; sourceTree = "<group>"; };
+		A74068A52C2C3E03001358EA /* AlgorithmModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AlgorithmModel.swift; sourceTree = "<group>"; };
+		A74068A72C2C3EF9001358EA /* AlgorithmViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AlgorithmViewModel.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -59,10 +67,8 @@
 			children = (
 				A740689A2C29BD0A001358EA /* Algorithm */,
 				A740688A2C29B4C2001358EA /* SearchAlgorithmApp.swift */,
-				A740688C2C29B4C2001358EA /* AlgorithmView.swift */,
 				A740688E2C29B4C3001358EA /* Assets.xcassets */,
 				A74068902C29B4C3001358EA /* Preview Content */,
-				A74068982C29BCE4001358EA /* GenerateGraph.swift */,
 			);
 			path = SearchAlgorithm;
 			sourceTree = "<group>";
@@ -78,10 +84,32 @@
 		A740689A2C29BD0A001358EA /* Algorithm */ = {
 			isa = PBXGroup;
 			children = (
+				A74068A42C2C3DF9001358EA /* Model */,
+				A740689F2C2C3785001358EA /* View */,
 				A740689B2C29BD1B001358EA /* BFS.swift */,
 				A740689D2C2AFCD9001358EA /* DFS.swift */,
+				A74068982C29BCE4001358EA /* GenerateGraph.swift */,
 			);
 			path = Algorithm;
+			sourceTree = "<group>";
+		};
+		A740689F2C2C3785001358EA /* View */ = {
+			isa = PBXGroup;
+			children = (
+				A740688C2C29B4C2001358EA /* AlgorithmView.swift */,
+				A74068A02C2C3921001358EA /* GridView.swift */,
+				A74068A22C2C3B04001358EA /* AlgorithmSelectionView.swift */,
+				A74068A72C2C3EF9001358EA /* AlgorithmViewModel.swift */,
+			);
+			path = View;
+			sourceTree = "<group>";
+		};
+		A74068A42C2C3DF9001358EA /* Model */ = {
+			isa = PBXGroup;
+			children = (
+				A74068A52C2C3E03001358EA /* AlgorithmModel.swift */,
+			);
+			path = Model;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -156,9 +184,13 @@
 			files = (
 				A74068992C29BCE4001358EA /* GenerateGraph.swift in Sources */,
 				A740688D2C29B4C2001358EA /* AlgorithmView.swift in Sources */,
+				A74068A82C2C3EF9001358EA /* AlgorithmViewModel.swift in Sources */,
 				A740688B2C29B4C2001358EA /* SearchAlgorithmApp.swift in Sources */,
 				A740689C2C29BD1B001358EA /* BFS.swift in Sources */,
+				A74068A12C2C3921001358EA /* GridView.swift in Sources */,
+				A74068A32C2C3B04001358EA /* AlgorithmSelectionView.swift in Sources */,
 				A740689E2C2AFCD9001358EA /* DFS.swift in Sources */,
+				A74068A62C2C3E03001358EA /* AlgorithmModel.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
