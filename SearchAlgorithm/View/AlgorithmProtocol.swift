@@ -1,11 +1,12 @@
 import Foundation
 
 protocol AlgorithmProtocol {
-    var getPath: [String] { get }
+    var getPath: [String] { get set }
     var getColumnSize: Int { get }
     var getRowSize: Int { get }
     var getGoalNode: String { get }
     var getSourceNode: String { get }
+    var getType: AlgorithmType { get }
     
     var algorithm: AlgorithmModel { get }
 }
@@ -13,7 +14,11 @@ protocol AlgorithmProtocol {
 extension AlgorithmProtocol {
     
     var getPath: [String] {
-        algorithm.path
+        get {
+            algorithm.path
+        }
+        set {
+        }
     }
     
     var getColumnSize: Int {
@@ -30,5 +35,19 @@ extension AlgorithmProtocol {
     
     var getSourceNode: String {
         algorithm.sourceNode
+    }
+    
+    var getType: AlgorithmType {
+        algorithm.type
+    }
+    
+    private func stopTimer() {
+        algorithm.timer?.invalidate()
+    }
+    
+    func clearSimulation() {
+        stopTimer()
+        algorithm.path = []
+        algorithm.currentColorIndex = 0
     }
 }

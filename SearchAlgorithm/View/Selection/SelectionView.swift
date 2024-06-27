@@ -5,14 +5,13 @@ struct SelectionView: View {
     let viewModel: SelectionViewModel
     
     var body: some View {
-        Picker("Selecione o algoritmo desejado", selection: $selectedAlgorithm) {
-            ForEach(AlgorithmType.allCases) { algorithm in
-                Text(algorithm.rawValue).tag(algorithm)
-            }
-        }
-        .pickerStyle(MenuPickerStyle())
-        .onChange(of: selectedAlgorithm) { newAlgorithm in
-            viewModel.startSimulation(for: newAlgorithm)
-        }
+            Picker("Selecione o algoritmo", selection: $selectedAlgorithm) {
+                ForEach(AlgorithmType.allCases) { algorithm in
+                    Text(algorithm.rawValue).tag(algorithm)
+                }
+            }.pickerStyle(MenuPickerStyle())
+                .onChange(of: selectedAlgorithm) { newAlgorithm in
+                    viewModel.startSimulation(for: newAlgorithm)
+                }
     }
 }

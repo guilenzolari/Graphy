@@ -23,6 +23,9 @@
 		A74068B12C2C4A7F001358EA /* GridViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = A74068B02C2C4A7F001358EA /* GridViewModel.swift */; };
 		A74068B32C2C4CDD001358EA /* AlgorithmProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = A74068B22C2C4CDD001358EA /* AlgorithmProtocol.swift */; };
 		A74068B52C2C4DAB001358EA /* SelectionViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = A74068B42C2C4DAB001358EA /* SelectionViewModel.swift */; };
+		A74068B82C2D8EE2001358EA /* OnboardingView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A74068B72C2D8EE2001358EA /* OnboardingView.swift */; };
+		A74068BA2C2D9740001358EA /* AboutButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = A74068B92C2D9740001358EA /* AboutButton.swift */; };
+		A74068BC2C2DA994001358EA /* QuestionButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = A74068BB2C2DA994001358EA /* QuestionButton.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -43,6 +46,9 @@
 		A74068B02C2C4A7F001358EA /* GridViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GridViewModel.swift; sourceTree = "<group>"; };
 		A74068B22C2C4CDD001358EA /* AlgorithmProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AlgorithmProtocol.swift; sourceTree = "<group>"; };
 		A74068B42C2C4DAB001358EA /* SelectionViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SelectionViewModel.swift; sourceTree = "<group>"; };
+		A74068B72C2D8EE2001358EA /* OnboardingView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OnboardingView.swift; sourceTree = "<group>"; };
+		A74068B92C2D9740001358EA /* AboutButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AboutButton.swift; sourceTree = "<group>"; };
+		A74068BB2C2DA994001358EA /* QuestionButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = QuestionButton.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -97,6 +103,7 @@
 		A740689A2C29BD0A001358EA /* View */ = {
 			isa = PBXGroup;
 			children = (
+				A74068B62C2D8ED1001358EA /* Onboarding */,
 				A74068A52C2C3E03001358EA /* AlgorithmModel.swift */,
 				A74068B22C2C4CDD001358EA /* AlgorithmProtocol.swift */,
 				A74068AF2C2C4A61001358EA /* Algorithm */,
@@ -139,8 +146,18 @@
 			children = (
 				A740688C2C29B4C2001358EA /* HomeView.swift */,
 				A74068A72C2C3EF9001358EA /* HomeViewModel.swift */,
+				A74068B92C2D9740001358EA /* AboutButton.swift */,
+				A74068BB2C2DA994001358EA /* QuestionButton.swift */,
 			);
 			path = Algorithm;
+			sourceTree = "<group>";
+		};
+		A74068B62C2D8ED1001358EA /* Onboarding */ = {
+			isa = PBXGroup;
+			children = (
+				A74068B72C2D8EE2001358EA /* OnboardingView.swift */,
+			);
+			path = Onboarding;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -216,10 +233,13 @@
 				A74068B12C2C4A7F001358EA /* GridViewModel.swift in Sources */,
 				A74068992C29BCE4001358EA /* GenerateGraph.swift in Sources */,
 				A740688D2C29B4C2001358EA /* HomeView.swift in Sources */,
+				A74068BA2C2D9740001358EA /* AboutButton.swift in Sources */,
+				A74068B82C2D8EE2001358EA /* OnboardingView.swift in Sources */,
 				A74068B32C2C4CDD001358EA /* AlgorithmProtocol.swift in Sources */,
 				A74068A82C2C3EF9001358EA /* HomeViewModel.swift in Sources */,
 				A740688B2C29B4C2001358EA /* SearchAlgorithmApp.swift in Sources */,
 				A740689C2C29BD1B001358EA /* BFS.swift in Sources */,
+				A74068BC2C2DA994001358EA /* QuestionButton.swift in Sources */,
 				A74068A12C2C3921001358EA /* GridView.swift in Sources */,
 				A74068A32C2C3B04001358EA /* SelectionView.swift in Sources */,
 				A740689E2C2AFCD9001358EA /* DFS.swift in Sources */,
@@ -363,6 +383,7 @@
 				DEVELOPMENT_TEAM = Q42NF3HR3Y;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_KEY_CFBundleDisplayName = Graphy;
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
@@ -392,6 +413,7 @@
 				DEVELOPMENT_TEAM = Q42NF3HR3Y;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_KEY_CFBundleDisplayName = Graphy;
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchScreen_Generation = YES;

@@ -8,17 +8,3 @@ struct HomeViewModel: AlgorithmProtocol {
         self.algorithm = algorithm
     }
 }
-
-// MARK: - Actions
-
-extension HomeViewModel {
-    private func stopTimer() {
-        algorithm.timer?.invalidate()
-    }
-    
-    func clearSimulation() {
-        stopTimer()
-        algorithm.path = []
-        algorithm.currentColorIndex = 0
-    }
-}
