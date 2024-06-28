@@ -26,6 +26,7 @@
 		A74068B82C2D8EE2001358EA /* OnboardingView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A74068B72C2D8EE2001358EA /* OnboardingView.swift */; };
 		A74068BA2C2D9740001358EA /* AboutButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = A74068B92C2D9740001358EA /* AboutButton.swift */; };
 		A74068BC2C2DA994001358EA /* QuestionButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = A74068BB2C2DA994001358EA /* QuestionButton.swift */; };
+		F2ECD1462C2D8479009F8C3C /* BidirectionaBFS.swift in Sources */ = {isa = PBXBuildFile; fileRef = F2ECD1452C2D8479009F8C3C /* BidirectionaBFS.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -49,6 +50,7 @@
 		A74068B72C2D8EE2001358EA /* OnboardingView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OnboardingView.swift; sourceTree = "<group>"; };
 		A74068B92C2D9740001358EA /* AboutButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AboutButton.swift; sourceTree = "<group>"; };
 		A74068BB2C2DA994001358EA /* QuestionButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = QuestionButton.swift; sourceTree = "<group>"; };
+		F2ECD1452C2D8479009F8C3C /* BidirectionaBFS.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BidirectionaBFS.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -135,6 +137,7 @@
 			isa = PBXGroup;
 			children = (
 				A740689B2C29BD1B001358EA /* BFS.swift */,
+				F2ECD1452C2D8479009F8C3C /* BidirectionaBFS.swift */,
 				A740689D2C2AFCD9001358EA /* DFS.swift */,
 				A74068982C29BCE4001358EA /* GenerateGraph.swift */,
 			);
@@ -241,6 +244,7 @@
 				A740689C2C29BD1B001358EA /* BFS.swift in Sources */,
 				A74068BC2C2DA994001358EA /* QuestionButton.swift in Sources */,
 				A74068A12C2C3921001358EA /* GridView.swift in Sources */,
+				F2ECD1462C2D8479009F8C3C /* BidirectionaBFS.swift in Sources */,
 				A74068A32C2C3B04001358EA /* SelectionView.swift in Sources */,
 				A740689E2C2AFCD9001358EA /* DFS.swift in Sources */,
 				A74068AD2C2C499C001358EA /* ViewFactory.swift in Sources */,

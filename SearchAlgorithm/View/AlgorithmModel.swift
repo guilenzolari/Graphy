@@ -6,7 +6,7 @@ class AlgorithmModel {
     var columnSize: Int = 10
     var rowSize: Int = 10
     var type: AlgorithmType = .none
-    var goalNode: String = "10-10"
+    var goalNode: String = "8-8"
     var sourceNode: String = "1-1"
     var currentColorIndex: Int = 0
     var timer: Timer? = nil
@@ -17,7 +17,8 @@ enum AlgorithmType: String, CaseIterable, Identifiable {
     
     case dfs = "DFS"
     case bfs = "BFS"
-  //  case aStar = "A*"
-  //  case dkjstra = "Djkstra"
+    case bidirectionalBfs = "Bidirectional BFS"
+//    case aStar = "A*"
+//    case dkjstra = "Djkstra"
     case none = "Nenhum"
 }

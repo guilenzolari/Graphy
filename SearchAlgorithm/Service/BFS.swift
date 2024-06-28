@@ -1,4 +1,4 @@
-func breadthFirst(graph: [String: [String]], source: String, goal: String) -> [String] {
+func breadthFirst(graph: [String: [String]], source: String, goal: String) -> SolutionPath {
     var queue = [source]
     var visited = [String]()
 
@@ -9,7 +9,7 @@ func breadthFirst(graph: [String: [String]], source: String, goal: String) -> [S
         }
         
         if(current == goal) {
-            return visited
+            return SinglePathSolution(visitedList: visited)
         }
         
         if let neighbors = graph[current] {
@@ -21,6 +21,25 @@ func breadthFirst(graph: [String: [String]], source: String, goal: String) -> [S
         }
     }
     
-    return visited
+    return SinglePathSolution(visitedList: visited)
 }
 
+
+protocol SolutionPath {
+    func nodes(for timeStamp: Int) -> [String]
+    var maxSize: Int { get }
+}
+
+struct SinglePathSolution: SolutionPath {
+    
+    var visitedList: [String]
+    
+    var maxSize: Int {
+        visitedList.count
+    }
+    
+    func nodes(for timeStamp: Int) -> [String] {
+        guard timeStamp < visitedList.count else { return [] }
+        return [visitedList[timeStamp]]
+    }
+}

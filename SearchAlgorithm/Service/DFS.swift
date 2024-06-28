@@ -1,4 +1,4 @@
-func depthFirst(graph: [String: [String]], source: String, goal: String) -> [String] {
+func depthFirst(graph: [String: [String]], source: String, goal: String) -> SolutionPath {
     var stack = [source]
     var visited = [String]()
 
@@ -8,7 +8,7 @@ func depthFirst(graph: [String: [String]], source: String, goal: String) -> [Str
             visited.append(current)
         }
         if(current == goal) {
-            return visited
+            return SinglePathSolution(visitedList: visited)
         }
         
         if let neighbors = graph[current] {
@@ -20,5 +20,5 @@ func depthFirst(graph: [String: [String]], source: String, goal: String) -> [Str
         }
     }
     
-    return visited
+    return SinglePathSolution(visitedList: visited)
 }

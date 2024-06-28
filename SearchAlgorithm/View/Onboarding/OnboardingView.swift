@@ -21,7 +21,7 @@ struct OnboardingView: View {
                     Image(systemName: "square.grid.3x3.square")
                         .resizable()
                         .frame(width: 42, height: 42)
-                        .foregroundColor(.blue)
+                        .foregroundColor(.accentColor)
                         .padding(.trailing, 10)
                     VStack (alignment: .leading, content: {
                         Text("Conheça algoritmos de busca")

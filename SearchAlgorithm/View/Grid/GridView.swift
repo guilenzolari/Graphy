@@ -33,7 +33,7 @@ struct GridView: View {
         case viewModel.getGoalNode:
             return .red
         default:
-            return .blue
+            return .accentColor
         }
     }
     
