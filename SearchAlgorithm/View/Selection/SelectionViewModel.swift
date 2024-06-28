@@ -16,28 +16,54 @@ extension SelectionViewModel {
         algorithm.type = type
     }
     
-    private func getAlgorithm() -> [String] {
+    private func getAlgorithm() {
         let graph = generateGraph(columnSize: algorithm.columnSize, rowSize: algorithm.rowSize)
+        
         switch(algorithm.type) {
-        case .bfs: return breadthFirst(graph: graph, source: algorithm.sourceNode, goal: algorithm.goalNode)
-        case .dfs: return depthFirst(graph: graph, source: algorithm.sourceNode, goal: algorithm.goalNode)
-        case .aStar:
-            return []
-        case .dkjstra:
-            return []
-        case .none: return []
-        }
+        case .bfs: let path = breadthFirst(graph: graph, source: algorithm.sourceNode, goal: algorithm.goalNode)
+            fillSinglePath(for: path)
+        case .dfs: let path = depthFirst(graph: graph, source: algorithm.sourceNode, goal: algorithm.goalNode)
+            fillSinglePath(for: path)
+        case .bidirectionalBfs: let path = bidirectionaBFS(graph: graph, source: algorithm.sourceNode, goal: algorithm.goalNode)
+            fillDoublePath(for: path)
+//        case .aStar:
+//            return []
+//        case .dkjstra:
+//            return []
+        case .none: break    }
     }
     
     func startSimulation(for type: AlgorithmType) {
         clearSimulation()
         setType (for: type)
-        let path = getAlgorithm()
         
+         getAlgorithm()
+    }
+    
+    func fillSinglePath(for path: SolutionPath) {
         algorithm.timer?.invalidate()
         algorithm.timer = Timer.scheduledTimer(withTimeInterval: 0.1, repeats: true) { _ in
-            if self.algorithm.currentColorIndex < path.count {
-                self.algorithm.path.append(path[self.algorithm.currentColorIndex])
+            if self.algorithm.currentColorIndex < path.maxSize {
+                self.algorithm.path.append(contentsOf: path.nodes(for: algorithm.currentColorIndex))
+                self.algorithm.currentColorIndex += 1
+            } else {
+                self.algorithm.timer?.invalidate()
+            }
+        }
+    }
+    
+    func fillDoublePath(for path: DoublePathSolution) {
+        algorithm.timer?.invalidate()
+        algorithm.timer = Timer.scheduledTimer(withTimeInterval: 0.1, repeats: true) { _ in
+            if self.algorithm.currentColorIndex < path.startMaxSize {
+                self.algorithm.path.append(contentsOf: path.startNodes(for: algorithm.currentColorIndex))
+                self.algorithm.currentColorIndex += 1
+            } else {
+                self.algorithm.timer?.invalidate()
+            }
+            
+            if self.algorithm.currentColorIndex < path.endMaxSize {
+                self.algorithm.path.append(contentsOf: path.endNodes(for: algorithm.currentColorIndex))
                 self.algorithm.currentColorIndex += 1
             } else {
                 self.algorithm.timer?.invalidate()

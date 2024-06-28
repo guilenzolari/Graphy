@@ -23,6 +23,7 @@
 		A74068B12C2C4A7F001358EA /* GridViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = A74068B02C2C4A7F001358EA /* GridViewModel.swift */; };
 		A74068B32C2C4CDD001358EA /* AlgorithmProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = A74068B22C2C4CDD001358EA /* AlgorithmProtocol.swift */; };
 		A74068B52C2C4DAB001358EA /* SelectionViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = A74068B42C2C4DAB001358EA /* SelectionViewModel.swift */; };
+		F2ECD1462C2D8479009F8C3C /* BidirectionaBFS.swift in Sources */ = {isa = PBXBuildFile; fileRef = F2ECD1452C2D8479009F8C3C /* BidirectionaBFS.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -43,6 +44,7 @@
 		A74068B02C2C4A7F001358EA /* GridViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GridViewModel.swift; sourceTree = "<group>"; };
 		A74068B22C2C4CDD001358EA /* AlgorithmProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AlgorithmProtocol.swift; sourceTree = "<group>"; };
 		A74068B42C2C4DAB001358EA /* SelectionViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SelectionViewModel.swift; sourceTree = "<group>"; };
+		F2ECD1452C2D8479009F8C3C /* BidirectionaBFS.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BidirectionaBFS.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -128,6 +130,7 @@
 			isa = PBXGroup;
 			children = (
 				A740689B2C29BD1B001358EA /* BFS.swift */,
+				F2ECD1452C2D8479009F8C3C /* BidirectionaBFS.swift */,
 				A740689D2C2AFCD9001358EA /* DFS.swift */,
 				A74068982C29BCE4001358EA /* GenerateGraph.swift */,
 			);
@@ -221,6 +224,7 @@
 				A740688B2C29B4C2001358EA /* SearchAlgorithmApp.swift in Sources */,
 				A740689C2C29BD1B001358EA /* BFS.swift in Sources */,
 				A74068A12C2C3921001358EA /* GridView.swift in Sources */,
+				F2ECD1462C2D8479009F8C3C /* BidirectionaBFS.swift in Sources */,
 				A74068A32C2C3B04001358EA /* SelectionView.swift in Sources */,
 				A740689E2C2AFCD9001358EA /* DFS.swift in Sources */,
 				A74068AD2C2C499C001358EA /* ViewFactory.swift in Sources */,
@@ -360,7 +364,7 @@
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_ASSET_PATHS = "\"SearchAlgorithm/Preview Content\"";
-				DEVELOPMENT_TEAM = Q42NF3HR3Y;
+				DEVELOPMENT_TEAM = 8JTQ9M4J69;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
@@ -389,7 +393,7 @@
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_ASSET_PATHS = "\"SearchAlgorithm/Preview Content\"";
-				DEVELOPMENT_TEAM = Q42NF3HR3Y;
+				DEVELOPMENT_TEAM = 8JTQ9M4J69;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
