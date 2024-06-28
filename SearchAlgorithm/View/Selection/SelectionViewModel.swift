@@ -26,6 +26,8 @@ extension SelectionViewModel {
             fillSinglePath(for: path)
         case .bidirectionalBfs: let path = bidirectionaBFS(graph: graph, source: algorithm.sourceNode, goal: algorithm.goalNode)
             fillDoublePath(for: path)
+        case .bidirectionalDfs: let path = bidirectionaDFS(graph: graph, source: algorithm.sourceNode, goal: algorithm.goalNode)
+            fillDoublePath(for: path)
 //        case .aStar:
 //            return []
 //        case .dkjstra:
@@ -42,7 +44,7 @@ extension SelectionViewModel {
     
     func fillSinglePath(for path: SolutionPath) {
         algorithm.timer?.invalidate()
-        algorithm.timer = Timer.scheduledTimer(withTimeInterval: 0.1, repeats: true) { _ in
+        algorithm.timer = Timer.scheduledTimer(withTimeInterval: 0.5, repeats: true) { _ in
             if self.algorithm.currentColorIndex < path.maxSize {
                 self.algorithm.path.append(contentsOf: path.nodes(for: algorithm.currentColorIndex))
                 self.algorithm.currentColorIndex += 1

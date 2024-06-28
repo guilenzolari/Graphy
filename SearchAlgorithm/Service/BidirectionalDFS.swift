@@ -1,4 +1,4 @@
-func bidirectionaBFS(graph: [String: [String]], source: String, goal: String) -> DoublePathSolution {
+func bidirectionaDFS(graph: [String: [String]], source: String, goal: String) -> DoublePathSolution {
     
     var queueStart = [source]
     var queueEnd = [goal]
@@ -7,8 +7,8 @@ func bidirectionaBFS(graph: [String: [String]], source: String, goal: String) ->
 
     while !queueStart.isEmpty && !queueEnd.isEmpty {
         
-        let currentStart = queueStart.removeFirst()
-        let currentEnd = queueEnd.removeFirst()
+        let currentStart = queueStart.removeLast()
+        let currentEnd = queueEnd.removeLast()
         
         //start
         if !visitedStart.contains(currentStart) {
@@ -19,7 +19,7 @@ func bidirectionaBFS(graph: [String: [String]], source: String, goal: String) ->
             visitedEnd.append(currentEnd)
         }
 
-        if  {
+        if visitedStart.contains(currentEnd) {
             return DoublePathSolution(startVisitedList: visitedStart, endVisitedList: visitedEnd)
         }
         
@@ -45,29 +45,5 @@ func bidirectionaBFS(graph: [String: [String]], source: String, goal: String) ->
     }
     
     return DoublePathSolution(startVisitedList: visitedStart, endVisitedList: visitedEnd)
-}
-
-struct DoublePathSolution {
-    
-    var startVisitedList: [String]
-    var endVisitedList: [String]
-    
-    var startMaxSize: Int {
-        startVisitedList.count
-    }
-    
-    var endMaxSize: Int {
-        endVisitedList.count
-    }
-    
-    func startNodes(for timeStamp: Int) -> [String] {
-        guard timeStamp < startVisitedList.count else { return [] }
-        return [startVisitedList[timeStamp]]
-    }
-    
-    func endNodes(for timeStamp: Int) -> [String] {
-        guard timeStamp < endVisitedList.count else { return [] }
-        return [endVisitedList[timeStamp]]
-    }
 }
 
