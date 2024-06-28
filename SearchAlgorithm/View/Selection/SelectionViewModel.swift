@@ -59,7 +59,7 @@ extension SelectionViewModel {
         algorithm.timer = Timer.scheduledTimer(withTimeInterval: 0.1, repeats: true) { _ in
             if self.algorithm.currentColorIndex < path.startMaxSize {
                 self.algorithm.path.append(contentsOf: path.startNodes(for: algorithm.currentColorIndex))
-                self.algorithm.currentColorIndex += 1
+                
             } else {
                 self.algorithm.timer?.invalidate()
             }
@@ -68,6 +68,10 @@ extension SelectionViewModel {
                 self.algorithm.path.append(contentsOf: path.endNodes(for: algorithm.currentColorIndex))
             } else {
                 self.algorithm.timer?.invalidate()
+            }
+            
+            if self.algorithm.currentColorIndex < path.startMaxSize || self.algorithm.currentColorIndex < path.endMaxSize {
+                self.algorithm.currentColorIndex += 1
             }
         }
     }

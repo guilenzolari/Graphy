@@ -15,16 +15,20 @@ func bidirectionaBFS(graph: [String: [String]], source: String, goal: String) ->
             visitedStart.append(currentStart)
         }
         
+        if let valores = graph[currentEnd] {
+            if visitedStart.contains(where: { item in valores.contains(item) }) {
+                return DoublePathSolution(startVisitedList: visitedStart, endVisitedList: visitedEnd)
+            }
+        }
+        
         if !visitedEnd.contains(currentEnd) {
             visitedEnd.append(currentEnd)
         }
-
-        if  {
-            return DoublePathSolution(startVisitedList: visitedStart, endVisitedList: visitedEnd)
-        }
         
-        if visitedEnd.contains(currentStart) {
-            return DoublePathSolution(startVisitedList: visitedStart, endVisitedList: visitedEnd)
+        if let valores = graph[currentStart] {
+            if visitedEnd.contains(where: { item in valores.contains(item) }) {
+                return DoublePathSolution(startVisitedList: visitedStart, endVisitedList: visitedEnd)
+            }
         }
 
         if let neighborsStart = graph[currentStart] {
