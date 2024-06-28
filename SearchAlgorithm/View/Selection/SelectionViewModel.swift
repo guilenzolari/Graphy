@@ -64,7 +64,6 @@ extension SelectionViewModel {
             
             if self.algorithm.currentColorIndex < path.endMaxSize {
                 self.algorithm.path.append(contentsOf: path.endNodes(for: algorithm.currentColorIndex))
-                self.algorithm.currentColorIndex += 1
             } else {
                 self.algorithm.timer?.invalidate()
             }
