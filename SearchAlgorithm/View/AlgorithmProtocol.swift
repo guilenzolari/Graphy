@@ -40,14 +40,4 @@ extension AlgorithmProtocol {
     var getType: AlgorithmType {
         algorithm.type
     }
-    
-    private func stopTimer() {
-        algorithm.timer?.invalidate()
-    }
-    
-    func clearSimulation() {
-        stopTimer()
-        algorithm.path = []
-        algorithm.currentColorIndex = 0
-    }
 }

@@ -11,7 +11,9 @@ struct HomeView: View {
         VStack {
             List {
                 Section {
-                    viewFactory.selectionView()
+                    viewFactory.selectionView { type in
+                        viewModel.startSimulation(for: type)
+                    }
                 }
                 Section {
                         viewFactory.gridView()
@@ -24,8 +26,9 @@ struct HomeView: View {
                 .toolbar {
                     ToolbarItemGroup(placement: .bottomBar) {
                         Button(action: {
+                            viewModel.startSimulation(for: viewModel.getType)
                         }) {
-                            Image(systemName: "play.circle")
+                            Image(systemName: "memories")
                                 .frame(width: 26, height: 22)
                         }.disabled(isActionButtonDisabled)
                         

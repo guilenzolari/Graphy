@@ -7,9 +7,11 @@ struct AboutButton: View {
     var body: some View {
         VStack {
             
-            Image("IconPng")
+            Image(systemName: "ellipsis.circle")
                 .resizable()
-                .frame(width: 26, height: 26)
+                .frame(width: 22, height: 22)
+                .fontWeight(.medium)
+                .foregroundColor(.accentColor)
                 .onTapGesture {
                     isPresentingAboutSheet = true
                 }
@@ -21,7 +23,10 @@ struct AboutButton: View {
             ),
             
             content: {
-                AboutView(isPresentingAboutSheet: $isPresentingAboutSheet)
+                AboutView(isPresentingAboutSheet: $isPresentingAboutSheet).onDisappear(
+                    perform: { isPresentingAboutSheet = false
+                    }
+                )
             })
         .padding()
     }
@@ -71,26 +76,28 @@ struct AboutView: View {
                     })
                 }
                 VStack (alignment: .leading, content: {
-                    Text("Sobre os autores")
-                        .font(.system(size: 17))
-                        .fontWeight(.bold)
-                        .padding(.bottom, 2)
                     HStack {
                         Image(systemName: "person")
                             .resizable()
-                            .frame(width: 46, height: 46)
+                            .frame(width: 41, height: 41)
                             .foregroundColor(.accentColor)
                             .padding(.trailing, 10)
-                        Text("Carolina é uma estudante da Apple Developer Academy e de  Sistemas de Informação na Unicamp.")
-                            .font(.system(size: 17))
-                            .foregroundColor(.secondary)
+                        VStack (alignment: .leading, content: {
+                            Text("Sobre os autores")
+                                .font(.system(size: 17))
+                                .fontWeight(.bold)
+                                .padding(.bottom, 2)
+                            Text("Carolina é uma estudante da Apple Developer Academy e de  Sistemas de Informação na Unicamp.")
+                                .font(.system(size: 17))
+                                .foregroundColor(.secondary)
+                        })
                         
                     }
                     
                     HStack {
                         Image(systemName: "person")
                             .resizable()
-                            .frame(width: 46, height: 46)
+                            .frame(width: 41, height: 41)
                             .foregroundColor(.accentColor)
                             .padding(.trailing, 10)
                         Text("Guilherme é um estudante da Apple Developer Academy e de  Engenharia Química na Unicamp.")
@@ -98,6 +105,9 @@ struct AboutView: View {
                             .foregroundColor(.secondary)
                     }
                 }).padding(.top, 24)
+                Text("Made with love by Carolina and Guilherme")
+                    .font(.system(size: 17))
+                    .foregroundColor(.secondary)
                 Spacer()
             })
             .padding()

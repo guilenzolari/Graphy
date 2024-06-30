@@ -3,10 +3,10 @@ import Foundation
 @Observable
 class AlgorithmModel {
     var path: [String] = []
-    var columnSize: Int = 10
-    var rowSize: Int = 10
+    var columnSize: Int = 11
+    var rowSize: Int = 11
     var type: AlgorithmType = .none
-    var goalNode: String = "10-10"
+    var goalNode: String = "11-11"
     var sourceNode: String = "1-1"
     var currentColorIndex: Int = 0
     var timer: Timer? = nil
@@ -17,8 +17,8 @@ enum AlgorithmType: String, CaseIterable, Identifiable {
     
     case dfs = "DFS"
     case bfs = "BFS"
-    case bidirectionalBfs = "Bidirectional BFS"
-    case bidirectionalDfs = "Bidirectional DFS"
+    case bidirectionalBfs = "BFS Bidirecional"
+    case bidirectionalDfs = "DFS Bidirecional"
 //    case aStar = "A*"
 //    case dkjstra = "Djkstra"
     case none = "Nenhum"

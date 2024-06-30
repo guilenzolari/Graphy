@@ -24,7 +24,10 @@ struct QuestionButton: View {
             ),
             
             content: {
-                QuestionView(isPresentingAboutSheet: $isPresentingAboutSheet)
+                QuestionView(isPresentingAboutSheet: $isPresentingAboutSheet).onDisappear(
+                    perform: { isPresentingAboutSheet = false
+                    }
+                )
             })
         .padding()
     }
@@ -34,12 +37,12 @@ struct QuestionView: View {
     @Binding var isPresentingAboutSheet: Bool
     
     let subtitleItems = [
-        SubtitleItem(iconName: "location.square", iconColor: .gray, title: "Seta vazia", description: "Nó onde se inicia a busca."),
+        SubtitleItem(iconName: "location.square", iconColor: Color(.systemGray3), title: "Seta vazia", description: "Nó onde se inicia a busca."),
         SubtitleItem(iconName: "location.square.fill", iconColor: .accentColor, title: "Seta preenchida", description: "Nó onde se inicia a busca após ser visitado."),
-        SubtitleItem(iconName: "square", iconColor: .gray, title: "Quadrado vazio", description: "Nó não visitado."),
+        SubtitleItem(iconName: "square", iconColor: Color(.systemGray3), title: "Quadrado vazio", description: "Nó não visitado."),
         SubtitleItem(iconName: "square.fill", iconColor: .accentColor, title: "Quadrado preenchido azul", description: "Nó após ser visitado."),
         SubtitleItem(iconName: "circle.square.fill", iconColor: .green, title: "Quadrado com círculo", description: "Nó que compõe o melhor caminho."),
-        SubtitleItem(iconName: "flag.square", iconColor: .gray, title: "Bandeira vazia", description: "Nó alvo (aquele que está sendo procurado)."),
+        SubtitleItem(iconName: "flag.square", iconColor: Color(.systemGray3), title: "Bandeira vazia", description: "Nó alvo (aquele que está sendo procurado)."),
         SubtitleItem(iconName: "flag.square.fill", iconColor: .red, title: "Bandeira preenchida", description: "Nó alvo após ser encontrado.")
     ]
 
@@ -113,7 +116,7 @@ struct SubtitileView: View {
 
 struct LocationInfoView_Previews: PreviewProvider {
     static var previews: some View {
-        SubtitileView(iconName: "location.square", iconColor: .gray, title: "Seta vazia", description: "Nó onde se inicia a busca.")
+        SubtitileView(iconName: "location.square", iconColor: Color(.systemGray3), title: "Seta vazia", description: "Nó onde se inicia a busca.")
     }
 }
 

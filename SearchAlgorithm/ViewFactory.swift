@@ -17,9 +17,9 @@ struct ViewFactory {
         return HomeView(viewModel: viewModel)
     }
     
-    func selectionView() -> SelectionView {
+    func selectionView(callback: @escaping (AlgorithmType) -> Void) -> SelectionView {
         let algorithm = dependencies.algorithm
         let viewModel = SelectionViewModel(algorithm: algorithm)
-        return SelectionView(viewModel: viewModel)
+        return SelectionView(viewModel: viewModel, callback: callback)
     }
 }
