@@ -24,7 +24,9 @@ struct QuestionButton: View {
             ),
             
             content: {
-                QuestionView(isPresentingAboutSheet: $isPresentingAboutSheet).onDisappear(
+                QuestionView(isPresentingAboutSheet: $isPresentingAboutSheet)
+                    .presentationDetents([.fraction(0.8)])
+                    .onDisappear(
                     perform: { isPresentingAboutSheet = false
                     }
                 )

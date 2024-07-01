@@ -1,27 +1,31 @@
-func breadthFirst(graph: [String: [String]], source: String, goal: String) -> SolutionPath {
-    var queue = [source]
-    var visited = [String]()
+import Foundation
 
-    while !queue.isEmpty {
-        let current = queue.removeFirst()
+func breadthFirst(graph: [String: [String]], source: String, goal: String) -> SolutionPath {
+    let queue = NSMutableOrderedSet(object: source)
+    let visited = NSMutableOrderedSet()
+
+    while queue.count > 0 {
+        let current = queue.firstObject as! String
+        queue.removeObject(at: 0)
+        
         if !visited.contains(current) {
-            visited.append(current)
+            visited.add(current)
         }
         
         if(current == goal) {
-            return SinglePathSolution(visitedList: visited)
+            return SinglePathSolution(visitedList: visited.array as! [String])
         }
         
         if let neighbors = graph[current] {
             for neighbor in neighbors {
                 if !visited.contains(neighbor) {
-                    queue.append(neighbor)
+                    queue.add(neighbor)
                 }
             }
         }
     }
     
-    return SinglePathSolution(visitedList: visited)
+    return SinglePathSolution(visitedList: visited.array as! [String])
 }
 
 
