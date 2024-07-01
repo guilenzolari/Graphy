@@ -106,7 +106,8 @@ struct AboutView: View {
                                 .foregroundColor(.secondary)
                         }
                     }).padding(.top, 24)
-                    HStack(alignment: .center, content: {
+                    HStack {
+                        Spacer()
                         Text("Feito com 💙 by")
                             .foregroundColor(.secondary)
                         Link("Carolina", destination: URL(string: "https://br.linkedin.com/in/carolquiterio")!)
@@ -118,7 +119,8 @@ struct AboutView: View {
                         Link("Guilherme", destination: URL(string: "https://br.linkedin.com/in/guilherme-lenzolari")!)
                             .bold()
                             .padding(-4)
-                    }).padding(.vertical)
+                        Spacer()
+                    }.padding(.vertical)
                     Spacer()
                 })
                 .padding()
