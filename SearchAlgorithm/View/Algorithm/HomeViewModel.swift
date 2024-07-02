@@ -44,19 +44,27 @@ extension HomeViewModel {
     
     func fillSinglePath(for path: SolutionPath) {
         algorithm.timer?.invalidate()
-        algorithm.timer = Timer.scheduledTimer(withTimeInterval: 0.05, repeats: true) { _ in
-            if self.algorithm.currentColorIndex < path.maxSize {
-                self.algorithm.path.append(contentsOf: path.nodes(for: algorithm.currentColorIndex))
-                self.algorithm.currentColorIndex += 1
-            } else {
-                self.algorithm.timer?.invalidate()
+        
+        func startTimer() {
+            algorithm.timer = Timer.scheduledTimer(withTimeInterval: getSpeed, repeats: false) { _ in
+                if self.algorithm.currentColorIndex < path.maxSize {
+                    self.algorithm.path.append(contentsOf: path.nodes(for: self.algorithm.currentColorIndex))
+                    self.algorithm.currentColorIndex += 1
+                    
+                    startTimer()
+                } else {
+                    self.algorithm.timer?.invalidate()
+                }
             }
         }
+        
+        startTimer()
     }
+
     
     func fillDoublePath(for path: DoublePathSolution) {
         algorithm.timer?.invalidate()
-        algorithm.timer = Timer.scheduledTimer(withTimeInterval: 0.05, repeats: true) { _ in
+        algorithm.timer = Timer.scheduledTimer(withTimeInterval: getSpeed, repeats: true) { _ in
             if self.algorithm.currentColorIndex < path.startMaxSize {
                 self.algorithm.path.append(contentsOf: path.startNodes(for: algorithm.currentColorIndex))
                 

@@ -13,19 +13,21 @@ struct GridView: View {
                         let current = "\(i)-\(j)"
                         if viewModel.getPath.contains(current) {
                             Image(systemName: getFilledSymbol(for: current))
-                                .font(.system(size: 26))
+                                .font(.system(size: 34))
                                 .foregroundStyle(getColor(for: current))
-                                .padding(.all, 0)
-                        } else {
+                                .padding(.vertical, -6)
+                                .padding(.horizontal, -4)
+                    } else {
                             Image(systemName: getEmptySymbol(for: current))
-                                .font(.system(size: 26))
+                                .font(.system(size: 34))
                                 .foregroundStyle(Color(.systemGray2))
-                                .padding(.all, 0)
+                                .padding(.vertical, -6)
+                                .padding(.horizontal, -4)
                         }
                     }
                 }
             }
-        }
+        }.padding()
     }
     
     func getColor(for current: String) -> Color {

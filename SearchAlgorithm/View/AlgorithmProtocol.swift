@@ -7,6 +7,7 @@ protocol AlgorithmProtocol {
     var getGoalNode: String { get }
     var getSourceNode: String { get }
     var getType: AlgorithmType { get }
+    var getSpeed: Double { get  set}
     
     var algorithm: AlgorithmModel { get }
 }
@@ -39,5 +40,14 @@ extension AlgorithmProtocol {
     
     var getType: AlgorithmType {
         algorithm.type
+    }
+    
+    var getSpeed: Double {
+        get {
+            algorithm.speed
+        }
+        set {
+            algorithm.speed = newValue
+        }
     }
 }

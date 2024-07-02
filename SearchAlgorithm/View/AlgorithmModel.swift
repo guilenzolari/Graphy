@@ -4,12 +4,13 @@ import Foundation
 class AlgorithmModel {
     var path: [String] = []
     var columnSize: Int = 11
-    var rowSize: Int = 11
+    var rowSize: Int = 15
     var type: AlgorithmType = .none
-    var goalNode: String = "11-11"
+    var goalNode: String = "15-11"
     var sourceNode: String = "1-1"
     var currentColorIndex: Int = 0
     var timer: Timer? = nil
+    var speed: Double = 0.1
 }
 
 enum AlgorithmType: String, CaseIterable, Identifiable {

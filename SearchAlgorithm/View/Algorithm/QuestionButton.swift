@@ -62,7 +62,7 @@ struct QuestionView: View {
                 Spacer()
                 Text("OK")
                     .font(.body)
-                    .foregroundColor(.blue)
+                    .foregroundColor(.accentColor)
                     
                     .fontWeight(.semibold)
                     .onTapGesture {
