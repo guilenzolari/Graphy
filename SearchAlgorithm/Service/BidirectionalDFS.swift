@@ -1,9 +1,11 @@
+import Foundation
+
 func bidirectionaDFS(graph: [String: [String]], source: String, goal: String) -> DoublePathSolution {
     
     var queueStart = [source]
     var queueEnd = [goal]
-    var visitedStart = [String]()
-    var visitedEnd = [String]()
+    var visitedStart = NSMutableOrderedSet()
+    var visitedEnd = NSMutableOrderedSet()
 
     while !queueStart.isEmpty && !queueEnd.isEmpty {
         
@@ -12,22 +14,22 @@ func bidirectionaDFS(graph: [String: [String]], source: String, goal: String) ->
         
         //start
         if !visitedStart.contains(currentStart) {
-            visitedStart.append(currentStart)
+            visitedStart.add(currentStart)
         }
         
         if let valores = graph[currentEnd] {
-            if visitedStart.contains(where: { item in valores.contains(item) }) {
-                return DoublePathSolution(startVisitedList: visitedStart, endVisitedList: visitedEnd)
+            if (visitedStart.array as! [String]).contains(where: { item in valores.contains(item) }) {
+                return DoublePathSolution(startVisitedList: visitedStart.array as! [String], endVisitedList: visitedEnd.array as! [String])
             }
         }
         
         if !visitedEnd.contains(currentEnd) {
-            visitedEnd.append(currentEnd)
+            visitedEnd.add(currentEnd)
         }
         
         if let valores = graph[currentStart] {
-            if visitedEnd.contains(where: { item in valores.contains(item) }) {
-                return DoublePathSolution(startVisitedList: visitedStart, endVisitedList: visitedEnd)
+            if (visitedEnd.array as! [String]).contains(where: { item in valores.contains(item) }) {
+                return DoublePathSolution(startVisitedList: visitedStart.array as! [String], endVisitedList: visitedEnd.array as! [String])
             }
         }
 
@@ -48,6 +50,6 @@ func bidirectionaDFS(graph: [String: [String]], source: String, goal: String) ->
         }
     }
     
-    return DoublePathSolution(startVisitedList: visitedStart, endVisitedList: visitedEnd)
+    return DoublePathSolution(startVisitedList: visitedStart.array as! [String], endVisitedList: visitedEnd.array as! [String])
 }
 

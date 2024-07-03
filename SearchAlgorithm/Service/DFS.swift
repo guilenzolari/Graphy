@@ -1,14 +1,18 @@
+import Foundation
+
 func depthFirst(graph: [String: [String]], source: String, goal: String) -> SolutionPath {
     var stack = [source]
-    var visited = [String]()
+    let visited = NSMutableOrderedSet()
 
     while !stack.isEmpty {
-        let current = stack.removeLast()
+            let current = stack.removeLast()
+        
         if !visited.contains(current) {
-            visited.append(current)
+            visited.add(current)
         }
-        if(current == goal) {
-            return SinglePathSolution(visitedList: visited)
+        
+        if current == goal {
+            return SinglePathSolution(visitedList: visited.array as! [String])
         }
         
         if let neighbors = graph[current] {
@@ -20,5 +24,6 @@ func depthFirst(graph: [String: [String]], source: String, goal: String) -> Solu
         }
     }
     
-    return SinglePathSolution(visitedList: visited)
+    return SinglePathSolution(visitedList: visited.array as! [String])
 }
+

@@ -1,40 +1,42 @@
+import Foundation
+
 func bidirectionaBFS(graph: [String: [String]], source: String, goal: String) -> DoublePathSolution {
     
-    var queueStart = [source]
-    var queueEnd = [goal]
-    var visitedStart = [String]()
-    var visitedEnd = [String]()
+    let queueStart = NSMutableOrderedSet(object: source)
+    let queueEnd = NSMutableOrderedSet(object: goal)
+    let visitedStart = NSMutableOrderedSet()
+    let visitedEnd = NSMutableOrderedSet()
 
-    while !queueStart.isEmpty && !queueEnd.isEmpty {
+    while queueStart.count > 0 && queueEnd.count > 0 {
+        let currentStart = queueStart.firstObject as! String
+        queueStart.removeObject(at: 0)
+        let currentEnd = queueEnd.firstObject as! String
+        queueEnd.removeObject(at: 0)
         
-        let currentStart = queueStart.removeFirst()
-        let currentEnd = queueEnd.removeFirst()
-        
-        //start
         if !visitedStart.contains(currentStart) {
-            visitedStart.append(currentStart)
+            visitedStart.add(currentStart)
         }
         
         if let valores = graph[currentEnd] {
-            if visitedStart.contains(where: { item in valores.contains(item) }) {
-                return DoublePathSolution(startVisitedList: visitedStart, endVisitedList: visitedEnd)
+            if (visitedStart.array as! [String]).contains(where: { item in valores.contains(item) }) {
+                return DoublePathSolution(startVisitedList: visitedStart.array as! [String], endVisitedList: visitedEnd.array as! [String])
             }
         }
         
         if !visitedEnd.contains(currentEnd) {
-            visitedEnd.append(currentEnd)
+            visitedEnd.add(currentEnd)
         }
         
         if let valores = graph[currentStart] {
-            if visitedEnd.contains(where: { item in valores.contains(item) }) {
-                return DoublePathSolution(startVisitedList: visitedStart, endVisitedList: visitedEnd)
+            if (visitedEnd.array as! [String]).contains(where: { item in valores.contains(item) }) {
+                return DoublePathSolution(startVisitedList: visitedStart.array as! [String], endVisitedList: visitedEnd.array as! [String])
             }
         }
 
         if let neighborsStart = graph[currentStart] {
             for neighbor in neighborsStart {
                 if !visitedStart.contains(neighbor) {
-                    queueStart.append(neighbor)
+                    queueStart.add(neighbor)
                 }
             }
         }
@@ -42,13 +44,13 @@ func bidirectionaBFS(graph: [String: [String]], source: String, goal: String) ->
         if let neighborsEnd = graph[currentEnd] {
             for neighbor in neighborsEnd {
                 if !visitedEnd.contains(neighbor) {
-                    queueEnd.append(neighbor)
+                    queueEnd.add(neighbor)
                 }
             }
         }
     }
     
-    return DoublePathSolution(startVisitedList: visitedStart, endVisitedList: visitedEnd)
+    return DoublePathSolution(startVisitedList: visitedStart.array as! [String], endVisitedList: visitedEnd.array as! [String])
 }
 
 struct DoublePathSolution {
