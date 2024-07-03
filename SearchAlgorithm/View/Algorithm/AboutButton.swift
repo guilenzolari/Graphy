@@ -29,7 +29,7 @@ struct AboutButton: View {
                     }
                 )
             })
-        .padding()
+        
     }
 }
 

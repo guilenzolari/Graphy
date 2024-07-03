@@ -35,10 +35,12 @@ struct HomeView: View {
         }.background(.background.secondary)
             .navigationTitle("Grafo")
             .navigationBarItems(
-                leading: AboutButton(),
-                trailing: QuestionButton()
+                trailing: HStack {
+                    Spacer()
+                    AboutButton().padding(.horizontal, 12)
+                    QuestionButton()
+                }
             )
-            
             .onChange(of: viewModel.getType, perform: { _ in
                 isActionButtonDisabled = viewModel.getType == .none
             })

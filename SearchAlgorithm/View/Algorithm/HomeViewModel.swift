@@ -49,7 +49,7 @@ extension HomeViewModel {
         algorithm.timer?.invalidate()
         
         func startTimer() {
-            algorithm.timer = Timer.scheduledTimer(withTimeInterval: getSpeed, repeats: false) { _ in
+            algorithm.timer = Timer.scheduledTimer(withTimeInterval: (0.21-getSpeed), repeats: false) { _ in
                 if self.algorithm.currentColorIndex < path.maxSize {
                     
                     self.algorithm.path.append(contentsOf: path.nodes(for: self.algorithm.currentColorIndex))
@@ -70,7 +70,7 @@ extension HomeViewModel {
         algorithm.timer?.invalidate()
         
         func startTimer() {
-            algorithm.timer = Timer.scheduledTimer(withTimeInterval: getSpeed, repeats: false) { _ in
+            algorithm.timer = Timer.scheduledTimer(withTimeInterval: (0.21-getSpeed), repeats: false) { _ in
                 if self.algorithm.currentColorIndex < path.startMaxSize {
                     self.algorithm.path.append(contentsOf: path.startNodes(for: algorithm.currentColorIndex))
                 } else {

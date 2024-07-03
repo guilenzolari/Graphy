@@ -16,13 +16,45 @@ struct CustomToolBar: View {
         if showSpeedToolbar {
             
             HStack {
-                Slider(
-                    value: $algorithmBinding.speed,
-                    in: 0.01...0.2
-                ).padding(.horizontal, 14)
-                    .padding(.vertical, 4)
+                HStack {
+                    Image(
+                        systemName: "tortoise"
+                    )
+                    .font(
+                        .system(
+                            size: 20
+                        )
+                    )
+                    .fontWeight(
+                        .regular
+                    )
+                    .foregroundColor(
+                        .gray
+                    )
+                    Slider(
+                        value: $algorithmBinding.speed,
+                        in: 0.01...0.2
+                    ).padding(.horizontal, 6)
+                        .padding(.vertical, 4)
+                        
+                    Image(
+                        systemName: "hare"
+                    )
+                    .font(
+                        .system(
+                            size: 20
+                        )
+                    )
+                    .fontWeight(
+                        .regular
+                    )
+                    .foregroundColor(
+                        .gray
+                    )
+                }
+                .padding(.horizontal, 12)
                 .background(Color.gray.opacity(0.1))
-                .cornerRadius(20)
+                    .cornerRadius(20)
                 Spacer()
                 Text(
                     "OK"
@@ -59,6 +91,7 @@ struct CustomToolBar: View {
         if showGridToolbar {
             
             HStack {
+                Spacer()
                 Button(action: {
                     nodeSelection.nodeType = .sourceNode
                 }) {
@@ -88,7 +121,6 @@ struct CustomToolBar: View {
                         )
                     )
                 }
-                Spacer()
                 Button(action: {
                     nodeSelection.nodeType = .goalNode
                 }) {
@@ -118,8 +150,7 @@ struct CustomToolBar: View {
                         )
                     )
                 }
-                Spacer()
-                Button(action: {
+             /*   Button(action: {
                     nodeSelection.nodeType = .emptyNode
                 }) {
                     HStack {
@@ -147,7 +178,7 @@ struct CustomToolBar: View {
                             lineWidth: (nodeSelection.nodeType == .emptyNode) ? 2 : 0
                         )
                     )
-                }
+                }*/
                 Spacer()
                 Text(
                     "OK"
@@ -164,6 +195,7 @@ struct CustomToolBar: View {
                 .onTapGesture {
                     withAnimation {
                         showGridToolbar = false
+                        nodeSelection.nodeType = .none
                     }
                 }
             }.padding()
@@ -200,6 +232,7 @@ struct CustomToolBar: View {
                 Spacer()
                 Button(action: {
                     withAnimation {
+                    clearSimulation()
                     showGridToolbar.toggle()
                 }
                 }) {
@@ -212,9 +245,7 @@ struct CustomToolBar: View {
                     .fontWeight(
                         .regular
                     )
-                }.disabled(
-                    !isActionButtonDisabled
-                )
+                }
                 Spacer()
                 Button(action: {
                     withAnimation {

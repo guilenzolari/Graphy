@@ -9,7 +9,7 @@ struct ViewFactory {
         let algorithm = dependencies.algorithm
         let nodeSelection = dependencies.nodeSelection
         let viewModel = GridViewModel(algorithm: algorithm)
-        return GridView(viewModel: viewModel, nodeSelection: dependencies.nodeSelection)
+        return GridView(viewModel: viewModel, nodeSelection: nodeSelection)
     }
     
     func homeView() -> HomeView {

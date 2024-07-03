@@ -2,6 +2,8 @@ import SwiftUI
 
 struct GridView: View {
     
+    @State private var showAlert = false
+    
     let viewModel: GridViewModel
     let nodeSelection: NodeSelection
     
@@ -21,9 +23,19 @@ struct GridView: View {
                                 .onTapGesture {
                                     vibrate()
                                     if(nodeSelection.nodeType == .sourceNode) {
-                                        viewModel.algorithm.sourceNode = current
+                                        vibrate()
+                                        if(viewModel.algorithm.goalNode == current) {
+                                            showAlert = true
+                                        } else {
+                                            viewModel.algorithm.sourceNode = current
+                                        }
                                     } else if(nodeSelection.nodeType == .goalNode) {
-                                        viewModel.algorithm.goalNode = current
+                                        vibrate()
+                                        if(viewModel.algorithm.sourceNode == current) {
+                                            showAlert = true
+                                        } else {
+                                            viewModel.algorithm.goalNode = current
+                                        }
                                     } else if(nodeSelection.nodeType == .emptyNode) {
                                         
                                     }
@@ -35,18 +47,32 @@ struct GridView: View {
                                 .padding(.vertical, -6)
                                 .padding(.horizontal, -4)
                                 .onTapGesture {
-                                    vibrate()
                                     if(nodeSelection.nodeType == .sourceNode) {
-                                        viewModel.algorithm.sourceNode = current
+                                        vibrate()
+                                        if(viewModel.algorithm.goalNode == current) {
+                                            showAlert = true
+                                        } else {
+                                            viewModel.algorithm.sourceNode = current
+                                        }
                                     } else if(nodeSelection.nodeType == .goalNode) {
-                                        viewModel.algorithm.goalNode = current
+                                        vibrate()
+                                        if(viewModel.algorithm.sourceNode == current) {
+                                            showAlert = true
+                                        } else {
+                                            viewModel.algorithm.goalNode = current
+                                        }
                                     }
-                                    
                                 }
                         }
                     }
                 }
             }
+        }.alert(isPresented: $showAlert) {
+            Alert(
+                title: Text("O nó fonte não pode ser igual ao nó alvo"),
+                message: Text("Escolha outro nó"),
+                dismissButton: .default(Text("OK"))
+            )
         }.padding()
     }
     
@@ -57,7 +83,7 @@ struct GridView: View {
         case viewModel.getSourceNode:
             return .accentColor
         default:
-            return Color(.systemGray2)
+            return Color(.systemGray4)
         }
     }
     
@@ -84,11 +110,11 @@ struct GridView: View {
     func getEmptySymbol(for current: String) -> String {
         switch current {
         case viewModel.getGoalNode:
-            return "flag.square"
+            return "flag.square.fill"
         case viewModel.getSourceNode:
-            return "location.square"
+            return "location.square.fill"
         default:
-            return "square"
+            return "square.fill"
         }
     }
     
