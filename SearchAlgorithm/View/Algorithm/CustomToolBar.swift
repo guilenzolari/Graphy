@@ -213,7 +213,7 @@ struct CustomToolBar: View {
                         .regular
                     )
                 }.disabled(
-                    isActionButtonDisabled
+                    !isActionButtonDisabled
                 )
                 Spacer()
                 Button(action: {

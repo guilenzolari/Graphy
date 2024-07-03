@@ -15,21 +15,34 @@ struct GridView: View {
                         if viewModel.getPath.contains(current) {
                             Image(systemName: getFilledSymbol(for: current))
                                 .font(.system(size: 34))
-                                .foregroundStyle(getColor(for: current))
+                                .foregroundStyle(getFilledColor(for: current))
                                 .padding(.vertical, -6)
                                 .padding(.horizontal, -4)
                                 .onTapGesture {
+                                    vibrate()
                                     if(nodeSelection.nodeType == .sourceNode) {
-                                        vibrate()
                                         viewModel.algorithm.sourceNode = current
+                                    } else if(nodeSelection.nodeType == .goalNode) {
+                                        viewModel.algorithm.goalNode = current
+                                    } else if(nodeSelection.nodeType == .emptyNode) {
+                                        
                                     }
                                 }
                     } else {
                             Image(systemName: getEmptySymbol(for: current))
                                 .font(.system(size: 34))
-                                .foregroundStyle(Color(.systemGray2))
+                                .foregroundStyle(getEmptyColor(for: current))
                                 .padding(.vertical, -6)
                                 .padding(.horizontal, -4)
+                                .onTapGesture {
+                                    vibrate()
+                                    if(nodeSelection.nodeType == .sourceNode) {
+                                        viewModel.algorithm.sourceNode = current
+                                    } else if(nodeSelection.nodeType == .goalNode) {
+                                        viewModel.algorithm.goalNode = current
+                                    }
+                                    
+                                }
                         }
                     }
                 }
@@ -37,7 +50,18 @@ struct GridView: View {
         }.padding()
     }
     
-    func getColor(for current: String) -> Color {
+    func getEmptyColor(for current: String) -> Color {
+        switch current {
+        case viewModel.getGoalNode:
+            return .red
+        case viewModel.getSourceNode:
+            return .accentColor
+        default:
+            return Color(.systemGray2)
+        }
+    }
+    
+    func getFilledColor(for current: String) -> Color {
         switch current {
         case viewModel.getGoalNode:
             return .red

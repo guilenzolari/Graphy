@@ -32,12 +32,13 @@ struct HomeView: View {
                               algorithm: viewModel.algorithm,
                               nodeSelection: viewModel.nodeSelection)
             }
-        }.navigationTitle("Grafo")
+        }.background(.background.secondary)
+            .navigationTitle("Grafo")
             .navigationBarItems(
                 leading: AboutButton(),
                 trailing: QuestionButton()
             )
-            .background(.background.secondary)
+            
             .onChange(of: viewModel.getType, perform: { _ in
                 isActionButtonDisabled = viewModel.getType == .none
             })
