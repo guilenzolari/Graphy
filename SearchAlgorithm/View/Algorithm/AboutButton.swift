@@ -10,7 +10,7 @@ struct AboutButton: View {
             Image(systemName: "ellipsis.circle")
                 .resizable()
                 .frame(width: 22, height: 22)
-                .fontWeight(.medium)
+                .fontWeight(.regular)
                 .foregroundColor(.accentColor)
                 .onTapGesture {
                     isPresentingAboutSheet = true

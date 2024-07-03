@@ -13,6 +13,11 @@ class AlgorithmModel {
     var speed: Double = 0.1
 }
 
+@Observable
+class NodeSelection {
+    var nodeType: NodeType = .none
+}
+
 enum AlgorithmType: String, CaseIterable, Identifiable {
     var id: String { self.rawValue }
     

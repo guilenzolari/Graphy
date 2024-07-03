@@ -1,11 +1,14 @@
 import Foundation
+import UIKit
 
 struct HomeViewModel: AlgorithmProtocol {
     
     let algorithm: AlgorithmModel
+    let nodeSelection: NodeSelection
     
-    init(algorithm: AlgorithmModel) {
+    init(algorithm: AlgorithmModel, nodeSelection: NodeSelection) {
         self.algorithm = algorithm
+        self.nodeSelection = nodeSelection
     }
 }
 
@@ -48,9 +51,10 @@ extension HomeViewModel {
         func startTimer() {
             algorithm.timer = Timer.scheduledTimer(withTimeInterval: getSpeed, repeats: false) { _ in
                 if self.algorithm.currentColorIndex < path.maxSize {
+                    
                     self.algorithm.path.append(contentsOf: path.nodes(for: self.algorithm.currentColorIndex))
                     self.algorithm.currentColorIndex += 1
-                    
+                    vibrate()
                     startTimer()
                 } else {
                     self.algorithm.timer?.invalidate()
@@ -64,27 +68,31 @@ extension HomeViewModel {
     
     func fillDoublePath(for path: DoublePathSolution) {
         algorithm.timer?.invalidate()
-        algorithm.timer = Timer.scheduledTimer(withTimeInterval: getSpeed, repeats: true) { _ in
-            if self.algorithm.currentColorIndex < path.startMaxSize {
-                self.algorithm.path.append(contentsOf: path.startNodes(for: algorithm.currentColorIndex))
+        
+        func startTimer() {
+            algorithm.timer = Timer.scheduledTimer(withTimeInterval: getSpeed, repeats: false) { _ in
+                if self.algorithm.currentColorIndex < path.startMaxSize {
+                    self.algorithm.path.append(contentsOf: path.startNodes(for: algorithm.currentColorIndex))
+                } else {
+                    self.algorithm.timer?.invalidate()
+                }
                 
-            } else {
-                self.algorithm.timer?.invalidate()
-            }
-            
-            if self.algorithm.currentColorIndex < path.endMaxSize {
-                self.algorithm.path.append(contentsOf: path.endNodes(for: algorithm.currentColorIndex))
-            } else {
-                self.algorithm.timer?.invalidate()
-            }
-            
-            if self.algorithm.currentColorIndex < path.startMaxSize || self.algorithm.currentColorIndex < path.endMaxSize {
-                self.algorithm.currentColorIndex += 1
+                if self.algorithm.currentColorIndex < path.endMaxSize {
+                    self.algorithm.path.append(contentsOf: path.endNodes(for: algorithm.currentColorIndex))
+                } else {
+                    self.algorithm.timer?.invalidate()
+                }
+                
+                if self.algorithm.currentColorIndex < path.startMaxSize || self.algorithm.currentColorIndex < path.endMaxSize {
+                    vibrate()
+                    self.algorithm.currentColorIndex += 1
+                    startTimer()
+                }
             }
         }
     }
     
-    private func stopTimer() {
+    func stopTimer() {
         algorithm.timer?.invalidate()
     }
     
@@ -92,5 +100,10 @@ extension HomeViewModel {
         stopTimer()
         algorithm.path = []
         algorithm.currentColorIndex = 0
+    }
+    
+    func vibrate() {
+        let generator = UIImpactFeedbackGenerator(style: .light)
+        generator.impactOccurred()
     }
 }

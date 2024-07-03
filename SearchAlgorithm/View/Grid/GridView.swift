@@ -3,6 +3,7 @@ import SwiftUI
 struct GridView: View {
     
     let viewModel: GridViewModel
+    let nodeSelection: NodeSelection
     
     var body: some View {
         VStack {
@@ -17,6 +18,12 @@ struct GridView: View {
                                 .foregroundStyle(getColor(for: current))
                                 .padding(.vertical, -6)
                                 .padding(.horizontal, -4)
+                                .onTapGesture {
+                                    if(nodeSelection.nodeType == .sourceNode) {
+                                        vibrate()
+                                        viewModel.algorithm.sourceNode = current
+                                    }
+                                }
                     } else {
                             Image(systemName: getEmptySymbol(for: current))
                                 .font(.system(size: 34))
@@ -60,8 +67,13 @@ struct GridView: View {
             return "square"
         }
     }
+    
+    func vibrate() {
+        let generator = UIImpactFeedbackGenerator(style: .light)
+        generator.impactOccurred()
+    }
 }
 
 #Preview {
-    GridView(viewModel: GridViewModel(algorithm: AlgorithmModel()))
+    GridView(viewModel: GridViewModel(algorithm: AlgorithmModel()), nodeSelection: NodeSelection())
 }

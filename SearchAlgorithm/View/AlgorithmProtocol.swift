@@ -5,7 +5,7 @@ protocol AlgorithmProtocol {
     var getColumnSize: Int { get }
     var getRowSize: Int { get }
     var getGoalNode: String { get }
-    var getSourceNode: String { get }
+    var getSourceNode: String { get set }
     var getType: AlgorithmType { get }
     var getSpeed: Double { get  set}
     
@@ -35,7 +35,12 @@ extension AlgorithmProtocol {
     }
     
     var getSourceNode: String {
-        algorithm.sourceNode
+        get {
+            algorithm.sourceNode
+        }
+        set {
+            algorithm.sourceNode = newValue
+        }
     }
     
     var getType: AlgorithmType {
