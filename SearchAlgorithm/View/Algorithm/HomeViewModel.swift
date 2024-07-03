@@ -83,13 +83,14 @@ extension HomeViewModel {
                     self.algorithm.timer?.invalidate()
                 }
                 
-                if self.algorithm.currentColorIndex < path.startMaxSize || self.algorithm.currentColorIndex < path.endMaxSize {
+                if self.algorithm.currentColorIndex <= path.startMaxSize || self.algorithm.currentColorIndex <= path.endMaxSize {
                     vibrate()
                     self.algorithm.currentColorIndex += 1
                     startTimer()
                 }
             }
         }
+        startTimer()
     }
     
     func stopTimer() {
