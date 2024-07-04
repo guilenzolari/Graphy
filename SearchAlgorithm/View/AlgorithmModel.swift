@@ -3,10 +3,11 @@ import Foundation
 @Observable
 class AlgorithmModel {
     var path: [String] = []
+    var barrier: [String] = []
     var columnSize: Int = 11
     var rowSize: Int = 16
     var type: AlgorithmType = .none
-    var goalNode: String = "15-11"
+    var goalNode: String = "16-11"
     var sourceNode: String = "1-1"
     var currentColorIndex: Int = 0
     var timer: Timer? = nil

@@ -8,6 +8,7 @@ struct CustomToolBar: View {
     let isActionButtonDisabled: Bool
     let startSimulation: () -> Void
     let clearSimulation: () -> Void
+    let clearGrid: () -> Void
     let algorithm: AlgorithmModel
     let nodeSelection: NodeSelection
     
@@ -34,9 +35,15 @@ struct CustomToolBar: View {
                     Slider(
                         value: $algorithmBinding.speed,
                         in: 0.01...0.2
-                    ).padding(.horizontal, 6)
-                        .padding(.vertical, 4)
-                        
+                    ).padding(
+                        .horizontal,
+                        6
+                    )
+                    .padding(
+                        .vertical,
+                        4
+                    )
+                    
                     Image(
                         systemName: "hare"
                     )
@@ -52,10 +59,19 @@ struct CustomToolBar: View {
                         .gray
                     )
                 }
-                .padding(.horizontal, 12)
-                .background(Color.gray.opacity(0.1))
-                    .cornerRadius(20)
-                    .padding(.bottom, 24)
+                .padding(
+                    .horizontal,
+                    12
+                )
+                .background(
+                    Color.gray.opacity(
+                        0.1
+                    )
+                )
+                .cornerRadius(
+                    20
+                )
+                
                 Spacer()
                 Text(
                     "OK"
@@ -66,7 +82,9 @@ struct CustomToolBar: View {
                 .foregroundColor(
                     .accentColor
                 )
-                .padding(.trailing)
+                .padding(
+                    .trailing
+                )
                 .fontWeight(
                     .semibold
                 )
@@ -76,6 +94,10 @@ struct CustomToolBar: View {
                     }
                 }
             }.padding()
+                .padding(
+                    .bottom,
+                    34
+                )
                 .transition(
                     .move(
                         edge: .bottom
@@ -118,7 +140,9 @@ struct CustomToolBar: View {
                         )
                         .stroke(
                             Color.blue,
-                            lineWidth: (nodeSelection.nodeType == .sourceNode) ? 2 : 0
+                            lineWidth: (
+                                nodeSelection.nodeType == .sourceNode
+                            ) ? 2 : 0
                         )
                     )
                 }
@@ -147,16 +171,18 @@ struct CustomToolBar: View {
                         )
                         .stroke(
                             Color.blue,
-                            lineWidth: (nodeSelection.nodeType == .goalNode) ? 2 : 0
+                            lineWidth: (
+                                nodeSelection.nodeType == .goalNode
+                            ) ? 2 : 0
                         )
                     )
                 }
-             /*   Button(action: {
-                    nodeSelection.nodeType = .emptyNode
+                Button(action: {
+                    nodeSelection.nodeType = .barrier
                 }) {
                     HStack {
                         Image(
-                            systemName: "square"
+                            systemName: "minus.square.fill"
                         )
                         .font(
                             .system(
@@ -167,7 +193,7 @@ struct CustomToolBar: View {
                             .thin
                         )
                         .foregroundColor(
-                            .gray
+                            .primary
                         )
                     }
                     .background(
@@ -176,10 +202,12 @@ struct CustomToolBar: View {
                         )
                         .stroke(
                             Color.blue,
-                            lineWidth: (nodeSelection.nodeType == .emptyNode) ? 2 : 0
+                            lineWidth: (
+                                nodeSelection.nodeType == .barrier
+                            ) ? 2 : 0
                         )
                     )
-                }*/
+                }
                 Spacer()
                 Text(
                     "OK"
@@ -268,8 +296,7 @@ struct CustomToolBar: View {
                 )
                 Spacer()
                 Button(action: {
-                    
-                    clearSimulation()
+                    clearGrid()
                 }) {
                     Image(
                         systemName: "eraser"
@@ -308,10 +335,9 @@ struct CustomToolBar: View {
 
 #Preview {
     CustomToolBar(isActionButtonDisabled: false,
-                  startSimulation: {
-    },
-                  clearSimulation: {
-    },
+                  startSimulation: {},
+                  clearSimulation: {},
+                  clearGrid: {},
                   algorithm: AlgorithmModel(),
                   nodeSelection: NodeSelection())
 }
@@ -319,6 +345,6 @@ struct CustomToolBar: View {
 enum NodeType {
     case sourceNode
     case goalNode
-    case emptyNode
+    case barrier
     case none
 }

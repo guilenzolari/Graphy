@@ -8,7 +8,6 @@ struct HomeView: View {
     @State private var isActionButtonDisabled = true
     
     var body: some View {
-        GeometryReader { totalSize in
             VStack {
                 List {
                     Section {
@@ -29,10 +28,12 @@ struct HomeView: View {
                 },
                               clearSimulation: { viewModel.clearSimulation()
                 },
+                              clearGrid: {
+                    viewModel.clearGrid()
+                },
                               algorithm: viewModel.algorithm,
                               nodeSelection: viewModel.nodeSelection)
             }
-        }
             .navigationTitle("Grafo")
             .navigationBarItems(
                 trailing: HStack {

@@ -16,6 +16,7 @@ struct GridView: View {
                 HStack(spacing: 0) {
                     ForEach(1...viewModel.getColumnSize, id: \.self) { j in
                         let current = "\(i)-\(j)"
+                        let isBarrier = viewModel.algorithm.barrier.contains(current)
                         CellView(
                             current: current,
                             isPulsing: pulsingCell == current,
@@ -25,7 +26,8 @@ struct GridView: View {
                             onDrag: { handleDrag(for: current) },
                             onDrop: { providers in handleDrop(providers: providers, on: current) },
                             goalNode: viewModel.getGoalNode, 
-                            sourceNode: viewModel.getSourceNode
+                            sourceNode: viewModel.getSourceNode,
+                            isBarrier: isBarrier
                         )
                     }
                 }
@@ -70,8 +72,10 @@ struct GridView: View {
                 pulse(cell: current)
                 viewModel.algorithm.goalNode = current
             }
-        } else if isEmptyNodeSelected() {
-            
+        } else if isBarrierSelected() {
+            vibrate()
+            pulse(cell: current)
+            viewModel.algorithm.barrier.append(current)
         }
     }
     
@@ -123,8 +127,8 @@ struct GridView: View {
         return nodeSelection.nodeType == .goalNode
     }
     
-    func isEmptyNodeSelected() -> Bool {
-        return nodeSelection.nodeType == .emptyNode
+    func isBarrierSelected() -> Bool {
+        return nodeSelection.nodeType == .barrier
     }
     
     func isSourceNode(_ current: String) -> Bool {
@@ -146,6 +150,7 @@ struct CellView: View {
     let onDrop: ([NSItemProvider]) -> Bool
     let goalNode: String
     let sourceNode: String
+    let isBarrier: Bool
     
     var body: some View {
         Image(systemName: getSymbol())
@@ -162,6 +167,9 @@ struct CellView: View {
     }
     
     func getColor() -> Color {
+        if (isBarrier) {
+            return .primary
+        }
         switch current {
         case goalNode:
             return .red
@@ -173,6 +181,9 @@ struct CellView: View {
     }
     
     func getSymbol() -> String {
+        if (isBarrier) {
+            return "minus.square.fill"
+        }
         switch current {
         case goalNode:
             return "flag.square.fill"

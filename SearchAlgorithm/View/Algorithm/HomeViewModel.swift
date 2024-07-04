@@ -20,7 +20,7 @@ extension HomeViewModel {
     }
     
     private func getAlgorithm() {
-        let graph = generateGraph(columnSize: algorithm.columnSize, rowSize: algorithm.rowSize)
+        let graph = generateGraph(columnSize: algorithm.columnSize, rowSize: algorithm.rowSize, barrier: algorithm.barrier)
         
         switch(algorithm.type) {
         case .bfs: let path = breadthFirst(graph: graph, source: algorithm.sourceNode, goal: algorithm.goalNode)
@@ -100,6 +100,16 @@ extension HomeViewModel {
     func clearSimulation() {
         stopTimer()
         algorithm.path = []
+        algorithm.currentColorIndex = 0
+    }
+    
+    func clearGrid() {
+        stopTimer()
+        algorithm.path = []
+        algorithm.barrier = []
+        algorithm.type = .none
+        algorithm.goalNode = "16-11"
+        algorithm.sourceNode = "1-1"
         algorithm.currentColorIndex = 0
     }
     
