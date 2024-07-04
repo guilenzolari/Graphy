@@ -55,6 +55,7 @@ struct CustomToolBar: View {
                 .padding(.horizontal, 12)
                 .background(Color.gray.opacity(0.1))
                     .cornerRadius(20)
+                    .padding(.bottom, 24)
                 Spacer()
                 Text(
                     "OK"
@@ -234,6 +235,7 @@ struct CustomToolBar: View {
                     withAnimation {
                     clearSimulation()
                     showGridToolbar.toggle()
+                        nodeSelection.nodeType = .sourceNode
                 }
                 }) {
                     Image(

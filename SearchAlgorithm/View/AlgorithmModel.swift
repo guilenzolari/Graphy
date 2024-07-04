@@ -4,7 +4,7 @@ import Foundation
 class AlgorithmModel {
     var path: [String] = []
     var columnSize: Int = 11
-    var rowSize: Int = 15
+    var rowSize: Int = 16
     var type: AlgorithmType = .none
     var goalNode: String = "15-11"
     var sourceNode: String = "1-1"

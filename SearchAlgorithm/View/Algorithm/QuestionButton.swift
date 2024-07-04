@@ -41,7 +41,7 @@ struct QuestionButton: View {
                 )
                 .presentationDetents(
                     [.fraction(
-                        0.6
+                        0.55
                     )]
                 )
                 .onDisappear(
@@ -93,10 +93,9 @@ struct QuestionView: View {
     
     
     var body: some View {
-        VStack (alignment: .center,
-                content: {
+        VStack (alignment: .leading, content: {
             
-            HStack(content: {
+            HStack(alignment: .center, content: {
                 Spacer()
                 Text(
                     "Legenda"
@@ -130,8 +129,8 @@ struct QuestionView: View {
                 .onTapGesture {
                     isPresentingAboutSheet = false
                 }
-            })
-            .padding()
+            }).padding(.bottom, 16)
+            
             
             VStack (alignment: .leading,
                     content: {
@@ -151,13 +150,9 @@ struct QuestionView: View {
                 }
                 
                 
-            }).padding(
-                .all,
-                8
-            )
+            })
             
-        }
-        )
+        }).padding()
     }
 }
 

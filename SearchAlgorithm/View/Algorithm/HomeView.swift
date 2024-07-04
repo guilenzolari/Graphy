@@ -16,7 +16,7 @@ struct HomeView: View {
                             viewModel.startSimulation(for: type)
                         }
                     }
-                }.frame(minHeight: 64, maxHeight: 64).padding(.all, 0)
+                }.frame(maxHeight: 44).padding(.all, 0)
                 
                 VStack {
                     viewFactory.gridView()
@@ -32,7 +32,7 @@ struct HomeView: View {
                               algorithm: viewModel.algorithm,
                               nodeSelection: viewModel.nodeSelection)
             }
-        }.background(.background.secondary)
+        }
             .navigationTitle("Grafo")
             .navigationBarItems(
                 trailing: HStack {
