@@ -41,7 +41,7 @@ struct QuestionButton: View {
                 )
                 .presentationDetents(
                     [.fraction(
-                        0.55
+                        0.60
                     )]
                 )
                 .onDisappear(
@@ -88,6 +88,12 @@ struct QuestionView: View {
             iconColor: .red,
             title: "Bandeira",
             description: "Nó alvo (aquele que está sendo procurado)."
+        ),
+        SubtitleItem(
+            iconName: "minus.square.fill",
+            iconColor: .primary,
+            title: "Traço",
+            description: "Barreira (nó não existente no grafo)."
         )
     ]
     
@@ -219,6 +225,7 @@ struct SubtitileView: View {
                 .foregroundColor(
                     .secondary
                 )
+                .multilineTextAlignment(.trailing)
             }
         })
     }

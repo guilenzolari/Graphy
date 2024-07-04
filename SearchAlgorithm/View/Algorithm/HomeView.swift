@@ -15,7 +15,7 @@ struct HomeView: View {
                             viewModel.startSimulation(for: type)
                         }
                     }
-                }.frame(maxHeight: 44).padding(.all, 0)
+                }.frame(maxHeight: 44).padding(.all, 0).padding(.top, 16)
                 
                 VStack {
                     viewFactory.gridView()
