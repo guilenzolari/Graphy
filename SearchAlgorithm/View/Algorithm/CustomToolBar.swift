@@ -96,7 +96,7 @@ struct CustomToolBar: View {
             }.padding()
                 .padding(
                     .bottom,
-                    34
+                    16
                 )
                 .transition(
                     .move(

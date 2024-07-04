@@ -17,6 +17,7 @@ struct GridView: View {
                     ForEach(1...viewModel.getColumnSize, id: \.self) { j in
                         let current = "\(i)-\(j)"
                         let isBarrier = viewModel.algorithm.barrier.contains(current)
+                        let isFinalNode = viewModel.algorithm.finalPath.contains(current)
                         CellView(
                             current: current,
                             isPulsing: pulsingCell == current,
@@ -27,7 +28,8 @@ struct GridView: View {
                             onDrop: { providers in handleDrop(providers: providers, on: current) },
                             goalNode: viewModel.getGoalNode, 
                             sourceNode: viewModel.getSourceNode,
-                            isBarrier: isBarrier
+                            isBarrier: isBarrier,
+                            isFinalNode: isFinalNode
                         )
                     }
                 }
@@ -151,6 +153,7 @@ struct CellView: View {
     let goalNode: String
     let sourceNode: String
     let isBarrier: Bool
+    let isFinalNode: Bool
     
     var body: some View {
         Image(systemName: getSymbol())
@@ -167,29 +170,35 @@ struct CellView: View {
     }
     
     func getColor() -> Color {
-        if (isBarrier) {
-            return .primary
-        }
         switch current {
         case goalNode:
             return .red
         case sourceNode:
             return .accentColor
         default:
+            if (isBarrier) {
+                return .primary
+            }
+            if (isFinalNode) {
+                return .green
+            }
             return isFilled ? .accentColor : Color(.systemGray4)
         }
     }
     
     func getSymbol() -> String {
-        if (isBarrier) {
-            return "minus.square.fill"
-        }
         switch current {
         case goalNode:
             return "flag.square.fill"
         case sourceNode:
             return "location.square.fill"
         default:
+            if (isBarrier) {
+                return "minus.square.fill"
+            }
+            if (isFinalNode) {
+                return "circle.square.fill"
+            }
             return "square.fill"
         }
     }

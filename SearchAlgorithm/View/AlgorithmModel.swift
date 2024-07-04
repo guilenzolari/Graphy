@@ -3,6 +3,7 @@ import Foundation
 @Observable
 class AlgorithmModel {
     var path: [String] = []
+    var finalPath: [String] = []
     var barrier: [String] = []
     var columnSize: Int = 11
     var rowSize: Int = 16
