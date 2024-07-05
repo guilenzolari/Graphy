@@ -42,6 +42,7 @@ struct HomeView: View {
                     QuestionButton()
                 }
             )
+            .background(.background.secondary)
             .onChange(of: viewModel.getType, perform: { _ in
                 isActionButtonDisabled = viewModel.getType == .none
             })
