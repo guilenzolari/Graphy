@@ -14,12 +14,23 @@ func bidirectionaBFS(graph: [String: [String]], source: String, goal: String) ->
         queueEnd.removeObject(at: 0)
         
         if !visitedStart.contains(currentStart) {
-            visitedStart.add(currentStart)
+            visitedStart.add(
+                currentStart
+            )
         }
         
         if let valores = graph[currentEnd] {
-            if (visitedStart.array as! [String]).contains(where: { item in valores.contains(item) }) {
-                return DoublePathSolution(startVisitedList: visitedStart.array as! [String], endVisitedList: visitedEnd.array as! [String])
+            if (
+                visitedStart.array as! [String]
+            ).contains(where: {
+                item in valores.contains(
+                    item
+                )
+            }) {
+                return DoublePathSolution(
+                    startVisitedList: visitedStart.array as! [String],
+                    endVisitedList: visitedEnd.array as! [String]
+                )
             }
         }
         

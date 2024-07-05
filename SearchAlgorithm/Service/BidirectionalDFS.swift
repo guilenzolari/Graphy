@@ -4,8 +4,8 @@ func bidirectionaDFS(graph: [String: [String]], source: String, goal: String) ->
     
     var queueStart = [source]
     var queueEnd = [goal]
-    var visitedStart = NSMutableOrderedSet()
-    var visitedEnd = NSMutableOrderedSet()
+    let visitedStart = NSMutableOrderedSet()
+    let visitedEnd = NSMutableOrderedSet()
 
     while !queueStart.isEmpty && !queueEnd.isEmpty {
         
