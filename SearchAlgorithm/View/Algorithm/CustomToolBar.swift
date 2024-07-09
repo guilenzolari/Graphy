@@ -124,7 +124,7 @@ struct CustomToolBar: View {
                         )
                         .font(
                             .system(
-                                size: 26
+                                size: 32
                             )
                         )
                         .fontWeight(
@@ -139,7 +139,7 @@ struct CustomToolBar: View {
                             cornerRadius: 4
                         )
                         .stroke(
-                            Color.blue,
+                            .indigo,
                             lineWidth: (
                                 nodeSelection.nodeType == .sourceNode
                             ) ? 2 : 0
@@ -155,14 +155,14 @@ struct CustomToolBar: View {
                         )
                         .font(
                             .system(
-                                size: 26
+                                size: 32
                             )
                         )
                         .fontWeight(
                             .thin
                         )
                         .foregroundColor(
-                            .red
+                            .green
                         )
                     }
                     .background(
@@ -170,23 +170,24 @@ struct CustomToolBar: View {
                             cornerRadius: 4
                         )
                         .stroke(
-                            Color.blue,
+                            .indigo,
                             lineWidth: (
                                 nodeSelection.nodeType == .goalNode
                             ) ? 2 : 0
                         )
                     )
+                    .padding(.horizontal)
                 }
                 Button(action: {
                     nodeSelection.nodeType = .barrier
                 }) {
                     HStack {
                         Image(
-                            systemName: "minus.square.fill"
+                            systemName: "square.fill"
                         )
                         .font(
                             .system(
-                                size: 26
+                                size: 32
                             )
                         )
                         .fontWeight(
@@ -201,7 +202,7 @@ struct CustomToolBar: View {
                             cornerRadius: 4
                         )
                         .stroke(
-                            Color.blue,
+                            .indigo,
                             lineWidth: (
                                 nodeSelection.nodeType == .barrier
                             ) ? 2 : 0
@@ -244,10 +245,10 @@ struct CustomToolBar: View {
         if !showSpeedToolbar && !showGridToolbar {
             HStack {
                 Button(action: {
-                    startSimulation()
+                    clearGrid()
                 }) {
                     Image(
-                        systemName: "memories"
+                        systemName: "eraser"
                     )
                     .font(
                         .title2
@@ -291,15 +292,13 @@ struct CustomToolBar: View {
                     .fontWeight(
                         .regular
                     )
-                }.disabled(
-                    isActionButtonDisabled
-                )
+                }
                 Spacer()
                 Button(action: {
-                    clearGrid()
+                    startSimulation()
                 }) {
                     Image(
-                        systemName: "eraser"
+                        systemName: "memories"
                     )
                     .font(
                         .title2
@@ -308,7 +307,7 @@ struct CustomToolBar: View {
                         .regular
                     )
                 }.disabled(
-                    isActionButtonDisabled
+                    algorithm.type == .none
                 )
             }
             .padding()

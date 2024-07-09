@@ -23,7 +23,5 @@ func depthFirst(graph: [String: [String]], source: String, goal: String) -> Solu
             }
         }
     }
-    
     return SinglePathSolution(visitedList: visited.array as! [String], finalPath: visited.array as! [String])
 }
-

@@ -12,9 +12,8 @@ func bidirectionaDFS(graph: [String: [String]], source: String, goal: String) ->
         let currentStart = queueStart.removeLast()
         let currentEnd = queueEnd.removeLast()
         
-        //start
-        if !visitedStart.contains(currentStart) {
-            visitedStart.add(currentStart)
+        if !visitedEnd.contains(currentEnd) {
+            visitedEnd.add(currentEnd)
         }
         
         if let valores = graph[currentEnd] {
@@ -23,8 +22,9 @@ func bidirectionaDFS(graph: [String: [String]], source: String, goal: String) ->
             }
         }
         
-        if !visitedEnd.contains(currentEnd) {
-            visitedEnd.add(currentEnd)
+        
+        if !visitedStart.contains(currentStart) {
+            visitedStart.add(currentStart)
         }
         
         if let valores = graph[currentStart] {

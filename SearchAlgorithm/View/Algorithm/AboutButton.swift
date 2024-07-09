@@ -7,7 +7,7 @@ struct AboutButton: View {
     var body: some View {
         VStack {
             
-            Image(systemName: "ellipsis.circle")
+            Image(systemName: "info.circle")
                 .resizable()
                 .frame(width: 22, height: 22)
                 .fontWeight(.regular)
@@ -29,7 +29,6 @@ struct AboutButton: View {
                     }
                 )
             })
-        
     }
 }
 
@@ -111,7 +110,7 @@ struct AboutView: View {
                         Text("Feito com 💙 by")
                             .foregroundColor(.secondary)
                         Link("Carolina", destination: URL(string: "https://br.linkedin.com/in/carolquiterio")!)
-                            .foregroundColor(.blue)
+                            .foregroundColor(.accentColor)
                             .bold()
                             .padding(-4)
                         Text("and")
@@ -125,6 +124,7 @@ struct AboutView: View {
                 })
                 .padding()
             })
+            .accentColor(.blue)
         }
 }
 

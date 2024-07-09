@@ -59,7 +59,7 @@ struct QuestionView: View {
     let subtitleItems = [
         SubtitleItem(
             iconName: "location.square.fill",
-            iconColor: .accentColor,
+            iconColor: .blue,
             title: "Seta",
             description: "Nó onde se inicia a busca."
         ),
@@ -73,24 +73,24 @@ struct QuestionView: View {
         ),
         SubtitleItem(
             iconName: "square.fill",
-            iconColor: .accentColor,
+            iconColor: .blue,
             title: "Quadrado azul",
             description: "Nó após ser visitado."
         ),
         SubtitleItem(
             iconName: "circle.square.fill",
-            iconColor: .green,
+            iconColor: .blue,
             title: "Quadrado com círculo",
             description: "Nó que compõe o caminho."
         ),
         SubtitleItem(
             iconName: "flag.square.fill",
-            iconColor: .red,
+            iconColor: .green,
             title: "Bandeira",
             description: "Nó alvo (aquele que está sendo procurado)."
         ),
         SubtitleItem(
-            iconName: "minus.square.fill",
+            iconName: "square.fill",
             iconColor: .primary,
             title: "Traço",
             description: "Barreira (nó não existente no grafo)."
@@ -159,6 +159,8 @@ struct QuestionView: View {
             })
             
         }).padding()
+        
+        .accentColor(.blue)
     }
 }
 
@@ -225,7 +227,7 @@ struct SubtitileView: View {
                 .foregroundColor(
                     .secondary
                 )
-                .multilineTextAlignment(.trailing)
+                .multilineTextAlignment(.leading)
             }
         })
     }

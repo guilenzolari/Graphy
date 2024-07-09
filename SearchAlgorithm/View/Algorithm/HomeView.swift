@@ -6,6 +6,7 @@ struct HomeView: View {
     var viewModel: HomeViewModel
     
     @State private var isActionButtonDisabled = true
+    @Environment(\.colorScheme) var colorScheme
     
     var body: some View {
             VStack {
@@ -42,10 +43,12 @@ struct HomeView: View {
                     QuestionButton()
                 }
             )
+          //  .background(colorScheme == .light ? .secondary : .tertiary)
             .background(.background.secondary)
             .onChange(of: viewModel.getType, perform: { _ in
                 isActionButtonDisabled = viewModel.getType == .none
             })
+            .accentColor(.blue)
         }
 }
 

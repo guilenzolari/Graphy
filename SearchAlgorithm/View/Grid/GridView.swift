@@ -172,17 +172,17 @@ struct CellView: View {
     func getColor() -> Color {
         switch current {
         case goalNode:
-            return .red
+            return .green
         case sourceNode:
-            return .accentColor
+            return .blue
         default:
             if (isBarrier) {
                 return .primary
             }
             if (isFinalNode) {
-                return .green
+                return .blue
             }
-            return isFilled ? .accentColor : Color(.systemGray4)
+            return isFilled ? .blue : Color(.systemGray4)
         }
     }
     
@@ -194,7 +194,7 @@ struct CellView: View {
             return "location.square.fill"
         default:
             if (isBarrier) {
-                return "minus.square.fill"
+                return "square.fill"
             }
             if (isFinalNode) {
                 return "circle.square.fill"
