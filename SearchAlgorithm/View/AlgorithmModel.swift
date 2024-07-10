@@ -13,6 +13,7 @@ class AlgorithmModel {
     var currentColorIndex: Int = 0
     var timer: Timer? = nil
     var speed: Double = 0.1
+    var hasPath: Bool = false
 }
 
 @Observable

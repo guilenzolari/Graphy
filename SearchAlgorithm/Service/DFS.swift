@@ -12,7 +12,10 @@ func depthFirst(graph: [String: [String]], source: String, goal: String) -> Solu
         }
         
         if current == goal {
-            return SinglePathSolution(visitedList: visited.array as! [String], finalPath: visited.array as! [String])
+            return SinglePathSolution(
+                    hasPath: true,
+                    visitedList: visited.array as! [String],
+                    finalPath: visited.array as! [String])
         }
         
         if let neighbors = graph[current] {
@@ -23,5 +26,8 @@ func depthFirst(graph: [String: [String]], source: String, goal: String) -> Solu
             }
         }
     }
-    return SinglePathSolution(visitedList: visited.array as! [String], finalPath: visited.array as! [String])
+    return SinglePathSolution(
+        hasPath: false,
+        visitedList: visited.array as! [String],
+        finalPath: visited.array as! [String])
 }

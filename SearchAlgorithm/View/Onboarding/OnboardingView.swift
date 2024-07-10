@@ -37,7 +37,10 @@ struct OnboardingView: View {
                 )
             )
             
-            NavigationLink(destination: viewFactory.homeView(),
+            Button(action: {
+                onboardingCompleted = true
+            }) {
+                NavigationLink(destination: viewFactory.homeView(),
                                label: {
                     HStack(
                         alignment: .center,
@@ -76,6 +79,10 @@ struct OnboardingView: View {
                         40
                     )
                 })
+            }
+            .disabled(
+                currentPage != 3
+            )
         }).padding(
             .horizontal,
             36
@@ -484,9 +491,9 @@ struct OnboardingViewPageThreeView: View {
                     .bottom
                 )
                 SubtitileView(
-                    iconName: "circle.square.fill",
+                    iconName: "square.fill",
                     iconColor: .green,
-                    title: "Quadrado com circulo",
+                    title: "Quadrado verde",
                     description: "Nó que compõe o caminho final."
                 )
                 .padding(

@@ -78,9 +78,9 @@ struct QuestionView: View {
             description: "Nó após ser visitado."
         ),
         SubtitleItem(
-            iconName: "circle.square.fill",
+            iconName: "square.fill",
             iconColor: .blue,
-            title: "Quadrado com círculo",
+            title: "Quadrado verde",
             description: "Nó que compõe o caminho."
         ),
         SubtitleItem(

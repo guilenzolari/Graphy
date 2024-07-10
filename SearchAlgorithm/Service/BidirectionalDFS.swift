@@ -18,7 +18,13 @@ func bidirectionaDFS(graph: [String: [String]], source: String, goal: String) ->
         
         if let valores = graph[currentEnd] {
             if (visitedStart.array as! [String]).contains(where: { item in valores.contains(item) }) {
-                return DoublePathSolution(startVisitedList: visitedStart.array as! [String], endVisitedList: visitedEnd.array as! [String])
+                return DoublePathSolution(
+                    hasPath: true, 
+                    startVisitedList: visitedStart.array as! [String],
+                    endVisitedList: visitedEnd.array as! [String],
+                    startFinalPath: (visitedStart.array as! [String]).reversed(),
+                    endFinalPath: (visitedEnd.array as! [String]).reversed()
+                )
             }
         }
         
@@ -29,7 +35,13 @@ func bidirectionaDFS(graph: [String: [String]], source: String, goal: String) ->
         
         if let valores = graph[currentStart] {
             if (visitedEnd.array as! [String]).contains(where: { item in valores.contains(item) }) {
-                return DoublePathSolution(startVisitedList: visitedStart.array as! [String], endVisitedList: visitedEnd.array as! [String])
+                return DoublePathSolution(
+                    hasPath: true,
+                    startVisitedList: visitedStart.array as! [String],
+                    endVisitedList: visitedEnd.array as! [String],
+                    startFinalPath: (visitedStart.array as! [String]).reversed(),
+                    endFinalPath: (visitedEnd.array as! [String]).reversed()
+                )
             }
         }
 
@@ -50,6 +62,11 @@ func bidirectionaDFS(graph: [String: [String]], source: String, goal: String) ->
         }
     }
     
-    return DoublePathSolution(startVisitedList: visitedStart.array as! [String], endVisitedList: visitedEnd.array as! [String])
+    return DoublePathSolution(
+        hasPath: false,
+        startVisitedList: visitedStart.array as! [String],
+        endVisitedList: visitedEnd.array as! [String],
+        startFinalPath: (visitedStart.array as! [String]).reversed(),
+        endFinalPath: (visitedEnd.array as! [String]).reversed()
+    )
 }
-

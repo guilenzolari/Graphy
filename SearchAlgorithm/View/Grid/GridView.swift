@@ -180,7 +180,7 @@ struct CellView: View {
                 return .primary
             }
             if (isFinalNode) {
-                return .blue
+                return .green
             }
             return isFilled ? .blue : Color(.systemGray4)
         }
@@ -197,7 +197,7 @@ struct CellView: View {
                 return "square.fill"
             }
             if (isFinalNode) {
-                return "circle.square.fill"
+                return "square.fill"
             }
             return "square.fill"
         }
