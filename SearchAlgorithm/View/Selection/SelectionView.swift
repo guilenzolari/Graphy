@@ -7,11 +7,11 @@ struct SelectionView: View {
     let callback: (_ selection: AlgorithmType) -> Void
     
     var body: some View {
-        Picker("Selecione o algoritmo", selection: binding(for: $selectedAlgorithm)) {
+        Picker("Selecione", selection: binding(for: $selectedAlgorithm)) {
             ForEach(AlgorithmType.allCases) { algorithm in
                 Text(algorithm.rawValue).tag(algorithm)
             }
-        }.pickerStyle(MenuPickerStyle())
+        }.pickerStyle(.menu)
     }
     
     private func binding(for selection: Binding<AlgorithmType>) -> Binding<AlgorithmType> {
@@ -25,3 +25,6 @@ struct SelectionView: View {
     }
 }
 
+#Preview {
+    SelectionView(viewModel: SelectionViewModel(algorithm: AlgorithmModel()), callback: {selection in })
+}

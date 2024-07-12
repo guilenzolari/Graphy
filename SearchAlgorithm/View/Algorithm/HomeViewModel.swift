@@ -66,7 +66,7 @@ extension HomeViewModel {
         )
             fillDoublePath(
                 for: path
-            )
+            ) 
             //        case .aStar:
             //            return []
             //        case .dkjstra:
